@@ -1,33 +1,27 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import ProfileButton from './profileButton';
+import './navigation.css'
+import "/Users/michelleli/Desktop/LuxeBNB/frontend/src/assets/ABNB.png"
+import { useHistory } from 'react-router-dom';
 
 function Navigation() {
-  const currentUser = useSelector(state => state.session.user);
-
-  let links;
-  if (currentUser) {
-    links = (
-      <ProfileButton user={currentUser} />
-    );
-  } else {
-    links = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
-    );
+  const history = useHistory()
+  const redirectHome = () => {
+    history.push("/")
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {/* <ProfileButton user={currentUser} /> */}
-        {links}
-      </li>
-    </ul>
+    <>
+    <div className='nav' onClick={redirectHome}>
+      <div id="logo">
+        <img id="logoimage" src={require("../../assets/ABNB.png")} />
+        <p id="logoname">luxebnb</p>
+      </div>
+      <div className="profileButton">
+        <ProfileButton />
+      </div>
+    </div>
+    </>
   );
 }
 

@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import { restoreSession } from './store/csrf';
+import { ModalProvider } from './context/Modal';
 
 const store = configureStore();
 
@@ -23,9 +24,11 @@ function initializeApp() {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <ModalProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </ModalProvider>
       </BrowserRouter>
     </React.StrictMode>
   );

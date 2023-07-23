@@ -1,64 +1,65 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { Redirect } from "react-router-dom";
-import { logout } from "../../store/session";
+import { useDispatch, useSelector } from 'react-redux';
+import { logout} from "../../store/session";
+import LoginFormModal from "../LoginForm";
+import './navigation.css'
+import SignupModal from "../SignupModal";
+import { setLoginErrors } from "../../store/errors";
 
-function ProfileButton({ user }) {
+function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const currentUser = useSelector(state => state.session.user)
   
-  const openMenu = () => {
-    debugger
+  const openMenu = (e) => {
+    e.stopPropagation()
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  const closeMenu = (e) => {
+    setShowMenu(false);
+    dispatch(setLoginErrors([]))
+  };
   
+  // const toggleMenu = (e) => {
+  //   e.stopPropagation()
+  //   if (showMenu === false) {
+  //     return openMenu
+  //   } else {
+  //     return closeMenu
+  //   }
+  // }
+
   useEffect(() => {
     if (!showMenu) return;
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
 
     document.addEventListener('click', closeMenu);
-  
+    
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(logout());
-  };
-
-  const login = (e) => {
-    e.preventDefault();
-    <Redirect to="/login" />;
-  }
-
-  const signup = (e) => {
-    e.preventDefault();
-    <Redirect to="/signup" />;
-  }
 
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fa-solid fa-user-circle" />
+      <button id="pfp" onClick={openMenu}>
+        <i id="burger" className="fa-solid fa-bars" style={{color: "#717171",}}/>
+        <i id="pfpIcon" className="fa-regular fa-circle-user fa-2xl" style={{color: "#717171",}}/>
       </button>
-      { showMenu && 
+      {showMenu  && !currentUser && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          {/* <li>
-            <button onClick={login}>Log In</button>
-          </li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-          <li>
-            <button onClick={signup}>Sign Up</button>
-          </li> */}
+           <>
+            <LoginFormModal/>
+            <SignupModal/>
+           </>
         </ul>
-      }
+      )} 
+      {showMenu && currentUser && (
+        <ul className="profile-dropdown">
+          <button onClick={()=> dispatch(logout())}>Log Out</button>
+        </ul>
+      )}
+      
     </>
   );
 }

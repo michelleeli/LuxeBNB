@@ -6,7 +6,7 @@ import errorsReducer from "./errors";
 
   const rootReducer = combineReducers({
     session,
-    errors: errorsReducer
+    errors: errorsReducer,
   });
   
   let enhancer;

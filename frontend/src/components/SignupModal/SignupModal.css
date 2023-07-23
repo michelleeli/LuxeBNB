@@ -1,0 +1,43 @@
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#ccc;
+    height: 1px;
+}
+
+input {
+    width: 480px;
+    height: 50px;
+    border: 1px solid grey;
+    border-bottom: none;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+
+#email {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#password {
+    border-bottom: 1px solid grey;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+h3 {
+    font-weight: 600;
+    text-align: left;
+}
+
+.submit {
+    color: white;
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
+    margin-top: 20px;
+}
