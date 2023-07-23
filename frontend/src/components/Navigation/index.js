@@ -17,10 +17,12 @@ function Navigation() {
         <img id="logoimage" src={require("../../assets/ABNB.png")} />
         <p id="logoname">luxebnb</p>
       </div>
+      <input type="text" id="search" placeholder='Search destinations'/>
       <div className="profileButton">
         <ProfileButton />
       </div>
     </div>
+    <hr id="header"/>
     </>
   );
 }
