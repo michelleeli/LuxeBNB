@@ -5,6 +5,5 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
   end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '*path', to: "static_pages#frontend_index"
 end

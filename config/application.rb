@@ -41,5 +41,6 @@ module LuxeBNB
     same_site: :lax,
     secure: Rails.env.production?
 
+    config.railties_order = [:all, :main_app]
   end
 end
