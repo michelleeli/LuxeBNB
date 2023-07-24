@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
+demoUser = User.create!(
+    first_name: "Demo",
+    last_name: "User",
+    email: "demouser@gmail.com",
+    password: "password"
+)
+
 house1 = Listing.create!(
     title: "Luxury 5 bedroom in New Jersey",
     address: "3157 31st",
@@ -30,4 +38,4 @@ house2 = Listing.create!(
     num_bed: 2,
     max_guests: 4,
     price: 899,
-    host_id: 2)
+    host_id: 1)

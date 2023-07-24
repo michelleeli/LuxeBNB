@@ -10,22 +10,29 @@ hr {
 input {
     width: 480px;
     height: 50px;
-    border: 1px solid grey;
-    border-bottom: none;
+    border: 1px solid  rgb(183, 182, 182);
     font-size: 15px;
     padding-left: 20px;
 }
 
-
-#email {
+#firstName {
+    border-bottom: none;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-#password {
-    border-bottom: 1px solid grey;
+#lastName {
+    border-bottom: 1px solid rgb(183, 182, 182);
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+}
+
+#email {
+    border-radius: 10px;
+}
+
+#password {
+    border-radius: 10px;
 }
 
 h3 {
@@ -40,4 +47,17 @@ h3 {
     border-radius: 10px;
     background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
     margin-top: 20px;
+}
+
+.placeholder {
+    position: relative;
+}
+
+.placeholder::after {
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    content: attr(data-placeholder);
+    pointer-events: none;
+    opacity: 0.5;
 }

@@ -11,11 +11,10 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-    validates :username, :email, :password_digest, :session_token, presence: true
-    validates :username, :email, :session_token, uniqueness: true
+    validates :first_name, :last_name, :email, :password_digest, :session_token, presence: true
+    validates :email, :session_token, uniqueness: true
     validates :password_digest, length: {in: 6...128}, allow_nil: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-    validates :username, length: {in: 6...256}
 
     has_many :listings,
         primary_key: :id, 
@@ -27,8 +26,8 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
-    def self.find_by_credentials(username, password)
-        user = User.find_by(username: username)
+    def self.find_by_credentials(email, password)
+        user = User.find_by(email: email)
         user&.authenticate(password) ? user : nil
     end
 

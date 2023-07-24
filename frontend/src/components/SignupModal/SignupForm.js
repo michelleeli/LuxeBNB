@@ -10,7 +10,8 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -26,10 +27,8 @@ function SignupFormPage() {
     e.stopPropagation();
     setErrors([])
     dispatch(clearErrors())
-    dispatch(signup({email, username, password})) 
-    if (password !== confirmPassword) {
-      dispatch(setSignupErrors(["Passwords must match"]))
-    } 
+    dispatch(signup({email, first_name:firstName, last_name:lastName, password})) 
+
   };
 
   const stopProp = (e) => {
@@ -45,13 +44,15 @@ function SignupFormPage() {
       <ul className="errors">
         {backErrors && backErrors.map(error => <li>{error}</li>)}
       </ul>
+        <input type="text" id="firstName" placeholder="First name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+        <br/>
+        <input type="text" id="lastName" placeholder="Last name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+        <br/>
+        <br/>
         <input type="text" value={email} placeholder="Email" id ="email" onChange={(e) => setEmail(e.target.value)} required/>
         <br/>
-        <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
         <br/>
-        <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
-        <br/>
-        <input type="password" value={confirmPassword} id="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} required/>
+        <input type="password" id="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
         <br/>
         <button type="submit" className="submit">Sign Up</button>
     </form>

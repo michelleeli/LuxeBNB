@@ -6,20 +6,20 @@ import './LoginForm.css'
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector(state => state.errors.login)
 
   const handleSubmit = (e) => {
     e.stopPropagation()
     e.preventDefault();
-    dispatch(login({ username, password }))
+    dispatch(login({ email, password }))
   };
 
   const demoLogin = (e) => {
     e.stopPropagation()
     e.preventDefault()
-    dispatch(login({username: "demouser", password: "password"}))
+    dispatch(login({email: "demouser@gmail.com", password: "password"}))
   }
   
   const stopProp = (e) => {
@@ -35,9 +35,9 @@ function LoginForm() {
       <div>
         <input
           type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       <br/>
