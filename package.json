@@ -2,5 +2,28 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-redux": "^8.1.1"
-  }
+  },
+  "name": "luxebnb",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michelleeli/LuxeBNB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "16.20.0"
+  },
+  "bugs": {
+    "url": "https://github.com/michelleeli/LuxeBNB/issues"
+  },
+  "homepage": "https://github.com/michelleeli/LuxeBNB#readme"
 }
