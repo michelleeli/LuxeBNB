@@ -10,7 +10,7 @@ export async function restoreSession() {
 }
     
 
-export async function csrfFetch(url, options) {
+export async function csrfFetch(url, options={}) {
     options.method ||= 'GET'
     options.headers ||= {}
 

@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+house1 = Listing.create!(
+    title: "Luxury 5 bedroom in New Jersey",
+    address: "3157 31st",
+    description: "The house is very spacious & bright. The best view of NYC skyscrapers are few steps from the apartment. Just a 20 minute commute from NYC",
+    city: "New Bergen",
+    state: "New Jersey",
+    num_bedroom: 5,
+    num_bath: 3,
+    num_bed: 6,
+    max_guests: 12,
+    price: 712,
+    host_id: 2)
+
+house2 = Listing.create!( 
+    title: "ARC Luxury Long Island City Apartment",
+    address: "30-02 39th Ave",
+    description: "ARC has been carefully curated for urbanites with an appreciation for design and authenticity, but what differentiates ARC is that the home experience doesn’t end within the four walls of the apartment.",
+    city: "Queens",
+    state: "New York",
+    num_bedroom: 2,
+    num_bath: 2,
+    num_bed: 2,
+    max_guests: 4,
+    price: 899,
+    host_id: 2)

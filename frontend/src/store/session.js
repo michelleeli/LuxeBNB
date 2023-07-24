@@ -1,7 +1,7 @@
 
 import { useSelector } from "react-redux";
 import { csrfFetch } from "./csrf";
-import { setLoginErrors } from "./errors";
+import { clearErrors, setLoginErrors } from "./errors";
 import { setSignupErrors } from "./errors";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
@@ -73,8 +73,12 @@ export const signup = (user) => async (dispatch) => {
     })
   });
   const data = await response.json();
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
+  if (response.ok) {
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+  } else {
+    dispatch(setSignupErrors(data.errors))
+  }
   return response;
 };
 

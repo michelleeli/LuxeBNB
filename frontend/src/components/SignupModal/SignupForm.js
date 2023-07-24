@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { clearErrors, setSignupErrors } from "../../store/errors";
 import { signup } from "../../store/session";
+import LoginFormModal from "../LoginForm";
 import './SignupModal.css'
 
 function SignupFormPage() {
@@ -12,30 +14,22 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const backErrors = useSelector(state => state.errors.signup)
+
+  useEffect(()=> {
+  }, [errors])
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(signup({email, username, password}))
-    // if (password === confirmPassword) {
-    //   setErrors([]);
-    //   return dispatch(signup({ email, username, password }))
-    //     .catch(async (res) => {
-    //     let data;
-    //     try {
-    //       data = await res.clone().json();
-    //     }
-    //     catch {
-    //       data = await res.text();
-    //     }
-    //     if (data?.errors) setErrors(data.errors);
-    //     else if (data) setErrors([data]);
-    //     else setErrors([res.statusText]);
-    //   });
-    // }
-    // return setErrors(['Confirm Password field must be the same as the Password field']);
+    setErrors([])
+    dispatch(clearErrors())
+    dispatch(signup({email, username, password})) 
+    if (password !== confirmPassword) {
+      dispatch(setSignupErrors(["Passwords must match"]))
+    } 
   };
 
   const stopProp = (e) => {
@@ -43,12 +37,13 @@ function SignupFormPage() {
   }
   
   return (
+    <>
     <form className="signupForm" onSubmit={handleSubmit} onClick={stopProp}>
       <h4>Create an Account</h4>
       <hr/>
       <h3>Welcome to Luxebnb</h3>
       <ul className="errors">
-        {errors.map(error => <li key={error}>{error}</li>)}
+        {backErrors && backErrors.map(error => <li>{error}</li>)}
       </ul>
         <input type="text" value={email} placeholder="Email" id ="email" onChange={(e) => setEmail(e.target.value)} required/>
         <br/>
@@ -60,6 +55,7 @@ function SignupFormPage() {
         <br/>
         <button type="submit" className="submit">Sign Up</button>
     </form>
+    </>
   );
 }
 

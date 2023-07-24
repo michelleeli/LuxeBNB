@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 import logger from 'redux-logger';
 import session from './session';
 import errorsReducer from "./errors";
+import listingReducer from "./listings";
 
   const rootReducer = combineReducers({
     session,
     errors: errorsReducer,
+    listings: listingReducer
   });
   
   let enhancer;
