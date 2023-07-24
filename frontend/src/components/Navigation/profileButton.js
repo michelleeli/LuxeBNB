@@ -4,7 +4,7 @@ import { logout} from "../../store/session";
 import LoginFormModal from "../LoginForm";
 import './navigation.css'
 import SignupModal from "../SignupModal";
-import { setLoginErrors } from "../../store/errors";
+import { clearErrors, setLoginErrors } from "../../store/errors";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ function ProfileButton() {
   const closeMenu = (e) => {
     setShowMenu(false);
     dispatch(setLoginErrors([]))
+    dispatch(clearErrors())
   };
   
   // const toggleMenu = (e) => {

@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import './Listing.css'
+import './ListingIndex.css'
 
 export const ListingIndexItem = ({listing}) => {
     const history = useHistory();

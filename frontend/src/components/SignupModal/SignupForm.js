@@ -41,9 +41,6 @@ function SignupFormPage() {
       <h4>Create an Account</h4>
       <hr/>
       <h3>Welcome to Luxebnb</h3>
-      <ul className="errors">
-        {backErrors && backErrors.map(error => <li>{error}</li>)}
-      </ul>
         <input type="text" id="firstName" placeholder="First name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
         <br/>
         <input type="text" id="lastName" placeholder="Last name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
@@ -51,6 +48,10 @@ function SignupFormPage() {
         <br/>
         <input type="text" value={email} placeholder="Email" id ="email" onChange={(e) => setEmail(e.target.value)} required/>
         <br/>
+        <div id="errors">
+        {backErrors && <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>}
+        <span className="errors"> {backErrors && backErrors.map(error => <span>{error}</span>)} </span>
+        </div>
         <br/>
         <input type="password" id="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
         <br/>

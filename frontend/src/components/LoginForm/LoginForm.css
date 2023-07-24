@@ -12,12 +12,12 @@ input {
 }
 
 input:first-child {
+    border-bottom: none;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
 input:last-child {
-    border-bottom: 1px solid grey;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
@@ -38,4 +38,10 @@ h3 {
 
 .errors {
     color:rgb(212, 56, 81)
+}
+
+#errors {
+    padding: 5px;
+    font-size: 13px;
+    text-align: left;
 }

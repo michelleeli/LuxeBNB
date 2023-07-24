@@ -1,17 +1,19 @@
-import LoginForm from "./components/LoginForm";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import ListingIndexPage
- from "./components/ListingIndex";
+import ListingIndexPage from "./components/ListingIndex";
+import ListingShowPage from "./components/ListingShow";
+
 function App() {
   return (
     <>
     <Navigation/>
     <Switch>
-    <ListingIndexPage/>
-    {/* <Route path="/" >
-      <ListingIndexPage />
-    </Route> */}
+    <Route exact path="/">
+      <ListingIndexPage/>
+    </Route>
+    <Route path="/listings/:listingId">
+       <ListingShowPage />
+    </Route>
 
   </Switch>
   </>

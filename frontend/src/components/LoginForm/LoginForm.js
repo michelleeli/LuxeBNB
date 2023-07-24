@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
+import { clearErrors } from "../../store/errors";
 import { login } from "../../store/session";
 import './LoginForm.css'
 
@@ -13,6 +14,7 @@ function LoginForm() {
   const handleSubmit = (e) => {
     e.stopPropagation()
     e.preventDefault();
+    dispatch(clearErrors())
     dispatch(login({ email, password }))
   };
 
@@ -31,7 +33,10 @@ function LoginForm() {
       <h4>Log In</h4>
       <hr/>
       <h3>Welcome to Luxebnb</h3>
-      <p className="errors">{errors}</p>
+      <div id="errors">
+        {errors && <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>}
+        <span className="errors">      {errors}</span>
+      </div>
       <div>
         <input
           type="text"
