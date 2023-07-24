@@ -9,12 +9,13 @@ export default function ListingShowPage() {
     const listingId = useParams().listingId
     const listing = useSelector((state) => state.listings[listingId])
 
-    // useEffect(() => {
-    //     dispatch(fetchListing(listingId))
-    // }, [listingId])
+    useEffect(() => {
+        dispatch(fetchListing(listingId))
+    }, [listingId])
 
     return (
         <>
+        {listing &&  (
         <div className="ListingShow">
             <h2>{listing.title}</h2>
             <div>
@@ -36,6 +37,7 @@ export default function ListingShowPage() {
 
         {/* <li>{`Price: ${listing.price}`}</li> */}
         </div>
+        )}
         </>
     )
 }
