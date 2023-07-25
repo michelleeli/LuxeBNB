@@ -61,3 +61,8 @@ h3 {
     pointer-events: none;
     opacity: 0.5;
 }
+
+#signupButton {
+    text-align: left;
+    padding-left: 20px;
+}

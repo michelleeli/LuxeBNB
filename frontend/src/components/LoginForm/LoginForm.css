@@ -45,3 +45,9 @@ h3 {
     font-size: 13px;
     text-align: left;
 }
+
+#loginButton {
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 15px;
+}

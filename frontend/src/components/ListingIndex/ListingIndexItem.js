@@ -10,8 +10,9 @@ export const ListingIndexItem = ({listing}) => {
 
      return (
         <div className="ListingItem" onClick={handleClick}>
-            <h4>{listing.city}, {listing.state}</h4>
-            <p>$ <b>{listing.price}</b> night</p>
+            <div className="showImage">image</div>
+            <h3>{listing.city}, {listing.state}</h3>
+            <p id="indexPrice">$ <b>{listing.price}</b> night</p>
         </div>
      )
 }

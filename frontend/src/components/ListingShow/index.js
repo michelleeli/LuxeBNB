@@ -3,23 +3,25 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchListing } from "../../store/listings"
 import './ListingShow.css'
+import Calendar from "../Calendar"
 
 export default function ListingShowPage() {
     const dispatch = useDispatch()
     const listingId = useParams().listingId
     const listing = useSelector((state) => state.listings[listingId])
-
+    
     useEffect(() => {
         dispatch(fetchListing(listingId))
     }, [listingId])
 
     return (
         <>
+        <div class="ShowPage">
         {listing &&  (
         <div className="ListingShow">
             <h2>{listing.title}</h2>
             <div>
-            <p>{listing.city}, {listing.state}</p>
+            <p id="location">{listing.city}, {listing.state}</p>
             </div>
             <p>Hosted by {listing.hostId}</p>
             <div className="numRooms">
@@ -32,12 +34,13 @@ export default function ListingShowPage() {
                 <span>{listing.numBath} bath</span>
             </div>
             <hr/>
-            <div>{listing.description}</div>
+            <div id="description">{listing.description}</div>
             <hr/>
-
-        {/* <li>{`Price: ${listing.price}`}</li> */}
+            <h3>What this place offers</h3>
         </div>
         )}
+        <Calendar listing={listing}/>
+        </div>
         </>
     )
 }
