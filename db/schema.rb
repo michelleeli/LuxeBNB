@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_23_194038) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_151958) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,10 +25,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_194038) do
     t.integer "num_bath", null: false
     t.integer "max_guests", null: false
     t.integer "price", null: false
+    t.boolean "self_checkin", default: false, null: false
+    t.boolean "wifi", default: false, null: false
+    t.boolean "air_condition", default: false, null: false
+    t.boolean "pets", default: false, null: false
+    t.boolean "tv", default: false, null: false
+    t.boolean "parking", default: false, null: false
+    t.boolean "washer", default: false, null: false
+    t.boolean "kitchen", default: false, null: false
     t.bigint "host_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["host_id"], name: "index_listings_on_host_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "listing_id", null: false
+    t.bigint "user_id", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.integer "guests", null: false
+    t.float "total", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_194038) do
   end
 
   add_foreign_key "listings", "users", column: "host_id"
+  add_foreign_key "reservations", "listings"
+  add_foreign_key "reservations", "users"
 end

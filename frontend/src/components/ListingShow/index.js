@@ -8,7 +8,7 @@ import Calendar from "../Calendar"
 export default function ListingShowPage() {
     const dispatch = useDispatch()
     const listingId = useParams().listingId
-    const listing = useSelector((state) => state.listings[listingId])
+    const listing = useSelector((state) => state.entities.listings[listingId])
     
     useEffect(() => {
         dispatch(fetchListing(listingId))
@@ -16,14 +16,20 @@ export default function ListingShowPage() {
 
     return (
         <>
+        {listing && (
+            <div id="title">
+            <h2>{listing.title}</h2>
+            <div>
+                <p id="location">{listing.city}, {listing.state}</p>
+            </div>
+            </div>
+        )}
+
         <div class="ShowPage">
         {listing &&  (
         <div className="ListingShow">
-            <h2>{listing.title}</h2>
-            <div>
-            <p id="location">{listing.city}, {listing.state}</p>
-            </div>
-            <p>Hosted by {listing.hostId}</p>
+
+            <p>Hosted by {listing.host}</p>
             <div className="numRooms">
                 <span>{listing.maxGuests} guests</span>
                 <span> • </span>
@@ -34,9 +40,37 @@ export default function ListingShowPage() {
                 <span>{listing.numBath} bath</span>
             </div>
             <hr/>
+            <div class="captionedIcons">
+                {listing.selfCheckin && (<p> <i className="fa-solid fa-house-lock" style={{color: "#717171",}}/> Self check-in</p> )}
+                <span id="caption">Check yourself in with the keypad.</span>
+            </div>
+            <hr/>
             <div id="description">{listing.description}</div>
             <hr/>
             <h3>What this place offers</h3>
+            <div class="offers">
+                {listing.wifi && 
+                    (<p> <i className="fa-solid fa-wifi" style={{color: "#717171",}}/> Wifi</p> )
+                }
+                {listing.airCondition && 
+                    (<p> <i className="fa-solid fa-snowflake" style={{color: "#717171",}}/> Air conditioning</p> )
+                }
+                {listing.pets && 
+                    (<p> <i className="fa-solid fa-paw" style={{color: "#717171",}}/> Pets allowed </p> )
+                }   
+                {listing.tv && 
+                    (<p> <i className="fa-solid fa-tv" style={{color: "#717171",}}/> TV </p> )
+                }
+                {listing.parking && 
+                    (<p> <i className="fa-solid fa-car" style={{color: "#717171",}}/> Free parking on premise </p> )
+                }
+                {listing.washer && 
+                    (<p> <i className="fa-solid fa-shirt" style={{color: "#717171",}}/> Washer and dryer </p> )
+                }
+                {listing.kitchen && 
+                    (<p> <i className="fa-solid fa-utensils" style={{color: "#717171",}}/> Kitchen </p> )
+                }
+            </div>
         </div>
         )}
         <Calendar listing={listing}/>
@@ -44,3 +78,5 @@ export default function ListingShowPage() {
         </>
     )
 }
+ 
+// selfchcekin

@@ -1,0 +1,50 @@
+.reservationIndex {
+    margin-left: 5vw;
+}
+
+#Trip {
+    margin-top: 30px;;
+    margin-bottom: 40px;
+}
+
+.reservationImg {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+.upcomingDiv {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: content-box;
+    border: 1px solid rgb(234, 233, 233);
+    border-radius: 15px;
+    padding-left: 25px;
+    width: 780px;
+    height: 190px;
+    box-shadow: 0px 0px 15px rgba(160, 159, 159, 0.3);
+}
+
+.upcomingDescription {
+    width: 400px;
+}
+
+#hostedBy {
+    margin-top: 0;
+    font-size: 12px;
+}
+
+#city {
+    margin-bottom: 5px;
+}
+
+.dateAddress {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#startDate {
+    padding-right: 10px;
+    border-right: 2px solid lightgrey;
+}

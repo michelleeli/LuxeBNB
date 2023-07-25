@@ -20,7 +20,7 @@ function SignupFormPage() {
   useEffect(()=> {
   }, [errors])
 
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();

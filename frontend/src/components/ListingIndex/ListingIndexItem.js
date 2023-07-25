@@ -10,7 +10,7 @@ export const ListingIndexItem = ({listing}) => {
 
      return (
         <div className="ListingItem" onClick={handleClick}>
-            <div className="showImage">image</div>
+            <img class="indexImg" src="https://wallpapers.com/images/high/aesthetic-glass-mansion-lgs04s3xlfg1iwat.webp"></img>
             <h3>{listing.city}, {listing.state}</h3>
             <p id="indexPrice">$ <b>{listing.price}</b> night</p>
         </div>

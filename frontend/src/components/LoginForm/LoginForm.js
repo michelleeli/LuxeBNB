@@ -29,7 +29,7 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} onClick={stopProp}>
+    <form className="loginForm" onSubmit={handleSubmit} onClick={stopProp}>
       <h4>Log In</h4>
       <hr/>
       <h3>Welcome to Luxebnb</h3>

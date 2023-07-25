@@ -12,6 +12,15 @@ class CreateListings < ActiveRecord::Migration[7.0]
       t.integer :max_guests, null: false
       t.integer :price, null: false
 
+      t.boolean :self_checkin, null: false, default: false
+      t.boolean :wifi, null: false, default: false
+      t.boolean :air_condition, null: false, default: false
+      t.boolean :pets, null: false, default: false
+      t.boolean :tv, null: false, default: false
+      t.boolean :parking, null: false, default: false
+      t.boolean :washer, null: false, default: false
+      t.boolean :kitchen, null: false, default: false
+
       t.references :host, foreign_key: {to_table: :users}, index: true
 
       t.timestamps

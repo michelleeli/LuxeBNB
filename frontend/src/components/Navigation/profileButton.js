@@ -5,12 +5,15 @@ import LoginFormModal from "../LoginForm";
 import './navigation.css'
 import SignupModal from "../SignupModal";
 import { clearErrors, setLoginErrors } from "../../store/errors";
+import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const currentUser = useSelector(state => state.session.user)
-  
+  const history = useHistory();
+
   const openMenu = (e) => {
     e.stopPropagation()
     if (showMenu) return;
@@ -31,6 +34,11 @@ function ProfileButton() {
   //     return closeMenu
   //   }
   // }
+
+  const redirectRes = (e) => {
+    e.stopPropagation()
+    history.push(`/reservations`)
+  }
 
   useEffect(() => {
     if (!showMenu) return;
@@ -57,6 +65,7 @@ function ProfileButton() {
       )} 
       {showMenu && currentUser && (
         <ul className="profile-dropdown">
+          <button onClick={redirectRes}>My Trips</button>
           <button onClick={()=> dispatch(logout())}>Log Out</button>
         </ul>
       )}

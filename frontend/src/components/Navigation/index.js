@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 function Navigation() {
   const history = useHistory()
+  
   const redirectHome = () => {
     history.push("/")
   }

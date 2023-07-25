@@ -1,8 +1,4 @@
-.showImage {
-    border: 1px solid lightgrey;
-    border-radius: 15px;
-    width: 290px;
-    height: 300px;
+.ListingItem {
     cursor: pointer;
 }
 
@@ -14,7 +10,6 @@
     column-gap: 20px;
     margin-top: 20px;
     font-size: 13px;
-    
 }
 
 h3 {
@@ -32,3 +27,10 @@ h3 {
 #indexPrice {
     font-size: 14px;
 }
+
+.indexImg {
+    width: 290px;
+    height: 300px;
+    border-radius: 15px;
+}
+

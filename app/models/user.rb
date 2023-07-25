@@ -3,7 +3,8 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  username        :string           not null
+#  first_name      :string           not null
+#  last_name       :string           not null
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -21,6 +22,8 @@ class User < ApplicationRecord
         foreign_key: :host_id,
         class_name: :Listing,
         dependent: :destroy
+    
+    has_many :reservations
 
     has_secure_password
 

@@ -23,3 +23,24 @@
     margin-top: 20px;
     font-size: 15px;
 }
+
+#reserveCaption {
+    font-size: 12px;
+    text-align: center;
+}
+
+.dates {
+    display: flex;
+    height: 50px;
+}
+
+#guestSelect {
+    height: 50px;
+    width: 92%;
+}
+
+#calendar {
+    position: absolute;
+    margin-top: 0px;
+    transform: translateX(-25vw);
+}

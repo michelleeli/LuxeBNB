@@ -3,27 +3,27 @@ import thunk from "redux-thunk";
 import logger from 'redux-logger';
 import session from './session';
 import errorsReducer from "./errors";
-import listingReducer from "./listings";
+import { entitiesReducer } from "./entities";
 
-  const rootReducer = combineReducers({
-    session,
-    errors: errorsReducer,
-    listings: listingReducer
-  });
+const rootReducer = combineReducers({
+  session,
+  errors: errorsReducer,
+  entities: entitiesReducer 
+});
   
-  let enhancer;
+let enhancer;
 
-  if (process.env.NODE_ENV === 'production') {
-    enhancer = applyMiddleware(thunk);
-  } else {
-    const logger = require('redux-logger').default;
-    const composeEnhancers =
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    enhancer = composeEnhancers(applyMiddleware(thunk, logger));
-  }
+if (process.env.NODE_ENV === 'production') {
+  enhancer = applyMiddleware(thunk);
+} else {
+  const logger = require('redux-logger').default;
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  enhancer = composeEnhancers(applyMiddleware(thunk, logger));
+}
 
-  const configureStore = (preloadedState) => {
-    return createStore(rootReducer, preloadedState, enhancer);
-  };
+const configureStore = (preloadedState) => {
+  return createStore(rootReducer, preloadedState, enhancer);
+};
 
-  export default configureStore
+export default configureStore

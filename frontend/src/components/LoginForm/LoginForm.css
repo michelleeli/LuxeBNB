@@ -4,20 +4,20 @@ hr {
     border: none;
 }
 
-input {
-    width: 500px;
+.loginForm input {
+    width: 480px;
     height: 50px;
     border: 1px solid grey;
     font-size: 15px;
 }
 
-input:first-child {
+.loginForm input:first-child {
     border-bottom: none;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-input:last-child {
+.loginForm input:last-child {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
