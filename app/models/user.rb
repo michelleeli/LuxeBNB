@@ -25,6 +25,8 @@ class User < ApplicationRecord
     
     has_many :reservations
 
+    has_one_attached :pfp
+
     has_secure_password
 
     before_validation :ensure_session_token

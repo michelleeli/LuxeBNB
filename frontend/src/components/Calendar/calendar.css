@@ -25,22 +25,159 @@
 }
 
 #reserveCaption {
+    margin-bottom: 4vh;
     font-size: 12px;
     text-align: center;
 }
 
-.dates {
+#dates {
     display: flex;
     height: 50px;
+}
+
+#checkin {
+    padding-top: 10px;
+    border-top-left-radius:7px ;
+}
+
+#checkout {
+    padding-top: 10px;
+    border-top-right-radius: 7px;
 }
 
 #guestSelect {
     height: 50px;
     width: 92%;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 
 #calendar {
     position: absolute;
     margin-top: 0px;
     transform: translateX(-25vw);
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;;
+    border: 1px solid rgb(234, 232, 232);
+    box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
+    border-radius: 15px;
+}
+
+.calendarDescription {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vw;
+}
+
+#done {
+    width: 7vw;
+    height: 3vw;
+    background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
+    color: white;
+    border-radius: 15px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fees {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    font-weight: 100;
+    margin-top: 1vh;
+}
+
+#guests {
+    position:absolute;
+    border: 1px solid rgb(234, 232, 232);
+    box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
+    padding-bottom: 1.5vw;
+    width: 300px;
+    background-color: white;
+    padding-top: 1.5vw;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+#adult{
+    display: flex;
+    height: 5vw;
+    justify-content: space-around;
+}
+
+#child{
+    display: flex;
+    height: 5vw;
+    justify-content: space-around;
+}
+
+#adult button, #child button {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100px;
+    border: 1px solid grey;
+    font-size: 20px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+#adult button:disabled, #child button:disabled {
+    border: 1px solid lightgray;
+    color: lightgray;
+}
+
+#adult button:disabled:hover, #child button:disabled:hover {
+    background-color: white;
+}
+
+#guests p {
+    margin-top: 1vw;
+    font-size: 17px;
+}
+
+#ageCaption {
+    font-size: 13px;
+    transform: translateY(-12px);
+}
+
+.done {
+    margin-left: 33%;
+}
+
+#dateCaption {
+    display: flex;
+    font-size: 11px;
+    font-weight: 700;
+    position: absolute;
+    padding-top: 0.5vw;
+}
+
+#dateCaption > div {
+    width: 130px;
+    padding-left: 1vw;
+}
+
+#saved {
+    width: 40vw;
+    height: 70vh;
+    justify-content: center;
+}
+
+#saved h3 {
+    text-align: center;
+}
+
+#confirmClose {
+    text-align: right;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+#confirmClose:hover {
+    background-color: white;
 }

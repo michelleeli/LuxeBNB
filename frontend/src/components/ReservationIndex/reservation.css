@@ -3,8 +3,8 @@
 }
 
 #Trip {
-    margin-top: 30px;;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 5vh;
 }
 
 .reservationImg {
@@ -47,4 +47,21 @@
 #startDate {
     padding-right: 10px;
     border-right: 2px solid lightgrey;
+}
+
+#cancel {
+    padding: 1vw;
+    width: 15vw;
+    margin-top: 5vh;
+}
+
+#cancel:hover {
+    background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
+    color: white;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+#been {
+    margin-top: 10vh;
 }

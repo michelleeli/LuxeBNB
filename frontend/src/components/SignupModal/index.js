@@ -11,7 +11,6 @@ function SignupModal() {
     e.stopPropagation()
     dispatch(clearErrors())
     setShowModal(true)
-    console.log(showModal)
   }
 
   return (

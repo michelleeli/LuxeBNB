@@ -25,9 +25,10 @@ export const fetchReservations = () => async dispatch => {
     if (res.ok) {
         const data = await res.json()
         dispatch(addReservations(data))
-    } else {
-        console.log('no')
-    }
+    } 
+    // else {
+    //     console.log('no')
+    // }
 }
 
 export const fetchReservation = (reservationId) => async dispatch => {
@@ -50,6 +51,19 @@ export const createReservation = (reservation) => async dispatch => {
     if (res.ok) {
         const data = await res.json();
         dispatch(addReservation(data))
+    }
+}
+
+export const deleteReservation = (reservationId) => async dispatch => {
+    const res = await csrfFetch(`/api/reservations/${reservationId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    if (res.ok) {
+        dispatch(removeReservation(reservationId))
     }
 }
 

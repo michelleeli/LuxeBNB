@@ -15,15 +15,21 @@ class Api::ReservationsController < ApplicationController
     end 
 
     def show 
-        @listing = Listing.find(params[:id])
-        if @listing 
-            render 'api/listings/show'
+        @reservation = Reservation.find(params[:id])
+        if @reservation 
+            render 'api/reservations/show'
         else 
             render json: {errors: @listing.errors.full_messages}, status: 422;
         end 
     end 
 
     def destroy
+        @reservation = Reservation.find(params[:id])
+        if @reservation 
+            @reservation.destroy
+        else 
+            render json: {errors: "Reservation was not found"}, status: 422;
+        end 
     end 
 
     def reservation_params 

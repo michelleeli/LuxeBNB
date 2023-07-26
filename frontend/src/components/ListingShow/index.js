@@ -18,13 +18,14 @@ export default function ListingShowPage() {
         <>
         {listing && (
             <div id="title">
-            <h2>{listing.title}</h2>
-            <div>
-                <p id="location">{listing.city}, {listing.state}</p>
-            </div>
+                <h2>{listing.title}</h2>
+                <div>
+                    <p id="location">{listing.city}, {listing.state}</p>
+                </div>
+                <img src="https://wallpapers.com/images/high/aesthetic-glass-mansion-lgs04s3xlfg1iwat.webp"></img>
+
             </div>
         )}
-
         <div class="ShowPage">
         {listing &&  (
         <div className="ListingShow">
