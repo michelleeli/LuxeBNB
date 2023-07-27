@@ -8,7 +8,7 @@ import { createReservation } from '../../store/reservations';
 import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
 import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
-
+import { parseISO } from 'date-fns';
 
 export default function CalendarModal({listing}) {
   const [openCal, setOpenCal] = useState(false)
@@ -21,6 +21,7 @@ export default function CalendarModal({listing}) {
   const [loggedOut, setLoggedOut] = useState(!currentUser)
   const [clickRes, setClickRes] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(()=> {
     setLoggedOut(!currentUser)
@@ -117,7 +118,12 @@ export default function CalendarModal({listing}) {
     e.preventDefault()
     if (loggedOut) {
       setClickRes(true)
-    } else {
+    } 
+    if (dates[0].startDate >= dates[0].endDate) {
+      setError(true) 
+      return;
+    } 
+    else {
       if (dispatch(createReservation({listing_id: listing.id, user_id: currentUser.id, start_date: dates[0].startDate, end_date: dates[0].endDate, guests, total: (listing.price * numDays())}))) {
         setSaved(true)
       }
@@ -127,26 +133,40 @@ export default function CalendarModal({listing}) {
   const totalFormat = () => {
     let total = (listing.price * numDays())
     total = total.toLocaleString("en-US");
-    // (listing.price * numDays()).toString().slice(-3,-1) + "," + (listing.price * numDays()).toString().slice(0, -3)
     return total
   }
 
-  
+  const reserved = () => {
+    let dates = []
+    listing?.reservations?.forEach (reservation => {
+      let start = reservation.start_date;
+      let d = new Date(start)
+      let date = start
+      while (date <= reservation.end_date) {
+        dates.push(parseISO(date))
+        d.setUTCDate(d.getUTCDate() + 1)
+        date = (d.toISOString().substr(0,10))
+      }
+    })
+    return dates;
+  }
 
-
-    
   return (
       <>
       {clickRes && (<Modal onClose={() => setClickRes(false)}>
           <LoginForm />
         </Modal>)}
+      {error && <div className='errors'>
+        <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>
+          <span>Minimum stay of 1 night</span>
+        </div>}
       {listing && (
           <form onSubmit={reserve}>
               <div id="dateCaption">
                 <div>CHECK IN</div>
                 <div>CHECK OUT</div>
               </div>
-              <div id="dates" onClick={(e)=>{e.stopPropagation(); setOpenCal(true); setOpenGuests(false)}}>
+              <div id="dates" onClick={(e)=>{e.stopPropagation(); setOpenCal(true); setOpenGuests(false); setError(false)}}>
                   <input id="checkin" type="date" placeholder="Check In" value={dateConvert(dates[0].startDate.toLocaleDateString())}/>
                   <input id="checkout" type="date" placeholder="Check Out" value={dateConvert(dates[0].endDate.toLocaleDateString())}/>
               </div>
@@ -157,7 +177,7 @@ export default function CalendarModal({listing}) {
                   <button id="done" onClick={()=> setOpenCal(false)} >Done</button>
                 </div>
                 <div onClick={(e)=> e.stopPropagation()}>
-                  <DateRange months={2} direction="horizontal" color="#D33756" minDate={new Date()} editableDateInputs={true} onChange={item => setDates([item.selection])} moveRangeOnFirstSelection={false} ranges={dates}/> 
+                  <DateRange months={2} direction="horizontal" color="#D33756" minDate={new Date()} editableDateInputs={true} onChange={item => setDates([item.selection])} moveRangeOnFirstSelection={false} ranges={dates} disabledDates={reserved()}/> 
                 </div>
               </div> )}
               
@@ -233,3 +253,7 @@ export default function CalendarModal({listing}) {
     )
       
 }
+
+
+
+// [parseISO("2023-07-29")]

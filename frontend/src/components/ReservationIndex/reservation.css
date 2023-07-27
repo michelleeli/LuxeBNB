@@ -65,3 +65,9 @@
 #been {
     margin-top: 10vh;
 }
+
+.errors span {
+    font-weight: 500;
+    margin-left: 0.5vw;
+    padding-bottom: 1vh;
+}
