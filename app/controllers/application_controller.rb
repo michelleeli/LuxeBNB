@@ -16,9 +16,9 @@ class ApplicationController < ActionController::API
     end
 
     def require_logged_in
-    unless current_user
-        render json: { message: 'Unauthorized' }, status: :unauthorized 
-    end
+        unless current_user
+            render json: { message: 'Unauthorized' }, status: :unauthorized 
+        end
     end
 
     private 
@@ -34,6 +34,5 @@ class ApplicationController < ActionController::API
     def attach_authenticity_token
         headers['X-CSRF-Token'] = masked_authenticity_token(session)
     end
-
 
 end

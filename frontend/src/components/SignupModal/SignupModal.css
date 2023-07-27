@@ -1,0 +1,68 @@
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#ccc;
+    height: 1px;
+}
+
+input {
+    width: 480px;
+    height: 50px;
+    border: 1px solid  rgb(183, 182, 182);
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+#firstName {
+    border-bottom: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#lastName {
+    border-bottom: 1px solid rgb(183, 182, 182);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#email {
+    border-radius: 10px;
+}
+
+#password {
+    border-radius: 10px;
+}
+
+h3 {
+    font-weight: 600;
+    text-align: left;
+}
+
+.submit {
+    color: white;
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
+    margin-top: 20px;
+}
+
+/* .placeholder {
+    position: relative;
+} */
+
+/* .placeholder::after {
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    content: attr(data-placeholder);
+    pointer-events: none;
+    opacity: 0.5;
+} */
+
+#signupButton {
+    text-align: left;
+    padding-left: 20px;
+}

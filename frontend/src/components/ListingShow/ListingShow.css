@@ -1,0 +1,53 @@
+.ListingShow {
+    margin-left: 150px;
+    /* margin-right: 150px; */
+    width: 655px;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+.ShowPage {
+    display: flex;
+}
+
+#location {
+    text-decoration: underline;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.offers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.offers i {
+    width: 2vw;
+}
+
+#caption {
+    font-size: 12px;
+    margin-left: 2.3vw;
+}
+
+.captionedIcons i {
+    width: 2vw;
+}
+
+
+.captionedIcons p {
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+#title {
+    margin-left: 10.5vw;
+}
