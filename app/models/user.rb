@@ -24,6 +24,7 @@ class User < ApplicationRecord
         dependent: :destroy
     
     has_many :reservations
+    has_many :reviews
 
     has_one_attached :pfp
 

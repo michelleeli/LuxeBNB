@@ -65,7 +65,7 @@ function ProfileButton() {
       )} 
       {showMenu && currentUser && (
         <ul className="profile-dropdown">
-          <button onClick={redirectRes}>My Trips</button>
+          <button id="trips" onClick={redirectRes}>My Trips</button>
           <button onClick={()=> dispatch(logout())}>Log Out</button>
         </ul>
       )}

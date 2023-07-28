@@ -105,3 +105,7 @@ button:hover {
     height: 1px;
     margin-top: 30px;
 }
+
+#trips {
+    margin-top: 2vh;
+}

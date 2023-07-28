@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf"
+import { ADD_LISTING } from "./listings"
 
 export const ADD_RESERVATION = 'reservations/ADD_RESERVATION'
 export const ADD_RESERVATIONS = 'reservations/ADD_RESERVATIONS'
@@ -75,8 +76,11 @@ export const reservationReducer = (state = {}, action) => {
             newState = {...state, ...action.reservations}
             return newState
         case ADD_RESERVATION: 
-            newState = {...state, [action.reservation.id]:action.reservation}
+            newState = {...state, ...action.reservation}
             return newState
+        case ADD_LISTING:
+            newState = {...state, ...action.listing.reservations}
+            return newState;
         case REMOVE_RESERVATION:
             delete(newState[action.reservationId])
             return newState

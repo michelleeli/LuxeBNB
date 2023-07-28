@@ -61,7 +61,7 @@ export const listingReducer = (state = {}, action) => {
             newState = {...state, ...action.listings}
             return newState
         case ADD_LISTING: 
-            newState = {...state, ...action.listing}
+            newState = {...state, ...action.listing.listing}
             return newState
         case REMOVE_LISTING:
             delete(newState[action.listingId])

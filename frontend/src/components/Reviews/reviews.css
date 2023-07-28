@@ -1,0 +1,53 @@
+.review {
+    width: 78%;
+    margin-left: 10vw;
+}
+
+.Reviews {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.ReviewItem {
+    padding-right: 5vw;
+    padding-bottom: 4vw;
+}
+
+.ReviewItem > #caption {
+    margin-left: 0px;
+    color: grey;
+    margin-bottom: 1vh;
+}
+
+#body {
+    line-height: 3vh;
+}
+
+.reviewVis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 4vh;
+}
+
+.reviewVis > * {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.reviewVis span {
+    margin-left: 1vw;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.factor {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 3vw;
+}
+
+progress {
+    accent-color: rgb(20, 20, 20);
+    width: 120px;
+    height: 9px;
+}

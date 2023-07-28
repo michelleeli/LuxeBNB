@@ -8,6 +8,7 @@ export const ReservationIndexItem = ({reservation}) => {
     const dispatch = useDispatch()
     const listing = useSelector((state) => state.entities.listings[reservation.listingId])
     const future = (new Date(reservation.startDate) > new Date ())
+    const [openReview, setOpenReview] = useState(false)
 
     useEffect(()=>{
         dispatch(fetchListing(reservation.listingId))
@@ -19,10 +20,12 @@ export const ReservationIndexItem = ({reservation}) => {
         }
     }
 
+
+
     return(
         <>
         {future && (<button id="cancel" onClick={deleteRes}>Cancel reservation</button>)}
-
+        {!future && (<button> onClick={()=> setOpenReview(true)}Write Review</button>)}
         {reservation && listing && (
             <>
         <div class="upcomingDiv">
@@ -32,7 +35,6 @@ export const ReservationIndexItem = ({reservation}) => {
                 <hr id="upcomingHr"/>
                 <div class="dateAddress">
                     <p id="startDate">{reservation.startDate}</p>
-                    {/* <p>End Date: {reservation.endDate}</p> */}
                     <p>{listing.address} {listing.city}, {listing.state}</p>
                 </div>
             </div>
