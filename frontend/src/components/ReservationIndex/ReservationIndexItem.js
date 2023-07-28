@@ -2,7 +2,8 @@ import { fetchListing } from "../../store/listings"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { deleteReservation } from "../../store/reservations"
-
+import ReviewForm from "../Reviews/ReviewForm"
+import { Modal } from "../../context/Modal"
 
 export const ReservationIndexItem = ({reservation}) => {
     const dispatch = useDispatch()
@@ -25,20 +26,25 @@ export const ReservationIndexItem = ({reservation}) => {
     return(
         <>
         {future && (<button id="cancel" onClick={deleteRes}>Cancel reservation</button>)}
-        {!future && (<button> onClick={()=> setOpenReview(true)}Write Review</button>)}
+        {!future && (<button id="cancel" onClick={()=> setOpenReview(true)}>Write Review</button>)}
+        {openReview && (
+            <Modal onClose={() => setOpenReview(false)}>
+                <ReviewForm reservation={reservation}/>
+            </Modal>
+        )}
         {reservation && listing && (
             <>
-        <div class="upcomingDiv">
-            <div class="upcomingDescription">
+        <div className="upcomingDiv">
+            <div className="upcomingDescription">
                 <h2 id="city">{listing.city}</h2>
                 <span id="hostedBy">Hosted by {listing.host}</span>
                 <hr id="upcomingHr"/>
-                <div class="dateAddress">
+                <div className="dateAddress">
                     <p id="startDate">{reservation.startDate}</p>
                     <p>{listing.address} {listing.city}, {listing.state}</p>
                 </div>
             </div>
-            <img class="reservationImg" src="https://wallpapers.com/images/high/aesthetic-glass-mansion-lgs04s3xlfg1iwat.webp"></img>
+            <img className="reservationImg" src="https://wallpapers.com/images/high/aesthetic-glass-mansion-lgs04s3xlfg1iwat.webp"></img>
        
         </div>
         </>

@@ -1,0 +1,12 @@
+input[type="radio"] {
+    width: 1vw;
+}
+
+.reviewForm > * {
+    padding: 1vh;
+}
+
+.reviewForm {
+    height: 80vh;
+    overflow-y: auto;
+}

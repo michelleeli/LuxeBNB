@@ -6,7 +6,12 @@ class Api::ReviewsController < ApplicationController
     end 
 
     def create
-        @review = Review.new(review)
+        @review = Review.new(review_params)
+        if @review.save 
+            render 'api/reviews/index'
+        else 
+            render json: {errors: @reivew.errors.full_messages}, status: 422
+        end 
     end
 
     def destroy
@@ -19,7 +24,7 @@ class Api::ReviewsController < ApplicationController
     end 
 
     def review_params
-        params.require(:review).permit(:body, :cleanlilness, :communication, :check_in, :accuracy, :location, :value, :rating)
+        params.require(:review).permit(:body, :cleanliness, :communication, :check_in, :accuracy, :location, :value, :rating, :user_id, :listing_id)
     end 
 
 
