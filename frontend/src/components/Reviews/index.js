@@ -16,80 +16,6 @@ export default function ReviewIndexPage({listingId}) {
         }
     }, [reviews])
 
-    const formatNum = (string) => {
-        return parseInt(string)
-    }
-
-    // const avgClean = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     reviews.forEach(review => {
-    //         sum += review.cleanliness
-    //     })
-    //     return (sum/ num).toFixed(1)
-    // }
-
-    // const avgAccuracy = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     reviews.forEach(review => {
-    //         sum += review.accuracy
-    //     })
-    //     return (sum/ num).toFixed(1)
-    // }
-
-    // const avgComm = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     reviews.forEach(review => {
-    //         sum += review.communication
-    //     })
-    //     return (sum/ num).toFixed(1)
-    // }
-
-    // const avgLocation = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     reviews.forEach(review => {
-    //         sum += review.location
-    //     })
-    //     return (sum/ num).toFixed(1)
-    // }
-
-    // const avgCheckin = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     reviews.forEach(review => {
-    //         sum += review.checkIn
-    //     })
-    //     return (sum/ num).toFixed(1)
-    // }
-
-    // const avgVal = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     reviews.forEach(review => {
-    //         sum += review.value
-    //     })
-    //     return (sum/ num).toFixed(1)
-    // }
-
-
-    // const avgRating = () => {
-    //     let sum = 0
-    //     let num = reviews.length
-    //     if (reviews.length === 0) {
-    //         return ""
-    //     }
-    //     reviews.forEach(review => {
-    //         sum += review.rating
-    //     })
-    //     if (sum/num === 5) {
-    //         return (sum/ num).toFixed(1)
-    //     } else {
-    //         return (sum / num).toFixed(2)
-    //     }
-    // }
 
     return (
         <div className="review">
@@ -98,48 +24,48 @@ export default function ReviewIndexPage({listingId}) {
             <h3> <i className="fa-solid fa-star"/> 
                 {listing.avgRating?.toFixed(2)}
                 <span> • {reviews?.length} reviews</span> </h3>
-            {!factorShow && (<div> Average rating will appear after 3 reviews </div>)}
+            {!factorShow && (<div id="three"> Average category ratings will appear after 3 reviews </div>)}
             {factorShow && (<div className="reviewVis">
                 <div className="factor">
                     <div>Cleanliness</div>
                     <div>
                         <progress max="5" value={listing.avgClean}></progress>
-                        <span>{listing.avgClean}</span>
+                        <span>{listing.avgClean.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Accuracy</div> 
                     <div>
                         <progress max="5" value={listing.avgAcc}></progress>
-                        <span>{listing.avgAcc}</span>
+                        <span>{listing.avgAcc.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Communication</div> 
                     <div>
                         <progress max="5" value={listing.avgComm}></progress>
-                        <span>{listing.avgComm}</span>
+                        <span>{listing.avgComm.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Location</div> 
                     <div>
                         <progress max="5" value={listing.avgLoc}></progress>
-                        <span>{listing.avgLoc}</span>
+                        <span>{listing.avgLoc.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Check-in</div>
                     <div>
                         <progress max="5" value={listing.avgCheckin}></progress>
-                        <span>{listing.avgCheckin}</span>
+                        <span>{listing.avgCheckin.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Value</div> 
                     <div>
                         <progress max="5" value={listing.avgVal}></progress>
-                        <span>{listing.avgVal}</span>
+                        <span>{listing.avgVal.slice(0,3)}</span>
                     </div>
                 </div>
             </div>)}

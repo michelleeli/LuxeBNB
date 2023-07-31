@@ -16,6 +16,7 @@ class Reservation < ApplicationRecord
     validates :listing_id, :user_id, :start_date, :end_date, :guests, :total, presence: true
 
     belongs_to :listing
+
     belongs_to :user
 
 end

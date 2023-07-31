@@ -55,3 +55,9 @@ h5 > *{
 #title {
     margin-left: 10.5vw;
 }
+
+#thumbnail {
+    width: 50%;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}

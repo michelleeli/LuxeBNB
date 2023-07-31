@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import { csrfFetch } from "./csrf"
 import { ADD_LISTING } from "./listings"
 
@@ -21,13 +22,18 @@ export const removeReview = (reviewId) => ({
     reviewId
 })
 
+export const getReview = (listingId, currentUserId) => (state) => {
+    const review = Object.values(state.entities.reviews).find(
+      (review) => ((review.listingId === listingId) && (review.userId === currentUserId)
+    ))
+    return review;
+};
+
 export const fetchReviews = () => async dispatch => {
     const res = await csrfFetch('/api/reviews')
     if (res.ok) {
         const data = await res.json()
         dispatch(addReviews(data))
-    } else {
-        console.log('no')
     }
 }
 
@@ -40,7 +46,6 @@ export const fetchReview = (reviewId) => async dispatch => {
 }
 
 export const createReview = (review) => async dispatch => {
-    debugger
     const res = await csrfFetch('/api/reviews', {
         method: 'POST',
         headers: {
@@ -55,6 +60,33 @@ export const createReview = (review) => async dispatch => {
     }
 }
 
+export const updateReview = (review) => async dispatch => {
+    const res = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(review)
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addReview(data))
+    }
+}
+
+export const deleteReview = (reviewId) => async dispatch => {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+    if (res.ok) {
+        dispatch(removeReview(reviewId))
+    }
+}
 
 export const reviewReducer = (state = {}, action) => {
     let newState = {...state}

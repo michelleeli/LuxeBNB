@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchListing } from "../../store/listings"
 import './ListingShow.css'
 import Calendar from "../Calendar"
 import ReviewIndexPage from "../Reviews"
+import MapContainer from "../Map"
 
 export default function ListingShowPage() {
     const dispatch = useDispatch()
@@ -25,7 +26,7 @@ export default function ListingShowPage() {
                     <span><u>{listing.reviewIds?.length} reviews</u></span>
                     <span id="location">{listing.city}, {listing.state}</span>
                 </h5>
-                <img src="https://wallpapers.com/images/high/aesthetic-glass-mansion-lgs04s3xlfg1iwat.webp"></img>
+                <img id="thumbnail" src={listing.photoUrl}></img>
 
             </div>
         )}
@@ -80,8 +81,9 @@ export default function ListingShowPage() {
         <Calendar listing={listing}/>
         </div>
         {listing && <ReviewIndexPage listingId={listing.id}/>}
+        {/* <MapContainer/> */}
         </>
     )
 }
  
-// selfchcekin
+

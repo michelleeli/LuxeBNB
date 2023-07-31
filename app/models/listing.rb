@@ -27,7 +27,7 @@
 #
 
 class Listing < ApplicationRecord
-    validates :title, :description, :city, :state, :num_bedroom, :num_bath, :num_bed, :max_guests, :price, presence: true
+    validates :title, :description, :city, :state, :num_bedroom, :num_bath, :num_bed, :max_guests, :price, :country, :lng, :lat, presence: true
     validates :self_checkin, :wifi, :air_condition, :pets, :tv, :parking, :washer, :kitchen, inclusion: [true, false]
 
     validates :address, presence: true, uniqueness: true
@@ -37,8 +37,11 @@ class Listing < ApplicationRecord
         foreign_key: :host_id,
         class_name: :User
 
-    has_many :reservations
-    has_many :reviews
+    has_many :reservations,
+        dependent: :destroy
+
+    has_many :reviews,
+        dependent: :destroy
     
     has_many_attached :images
 end

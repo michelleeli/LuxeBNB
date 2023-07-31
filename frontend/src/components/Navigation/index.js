@@ -13,17 +13,17 @@ function Navigation() {
 
   return (
     <>
-    <div className='nav' onClick={redirectHome}>
-      <div id="logo">
-        <img id="logoimage" src={require("../../assets/ABNB.png")} />
-        <p id="logoname">luxebnb</p>
+      <div className='nav' >
+        <div id="logo" onClick={redirectHome}>
+          <img id="logoimage" src={require("../../assets/ABNB.png")} />
+          <p id="logoname">luxebnb</p>
+        </div>
+        <input type="text" id="search" placeholder='Search destinations'/>
+        <div className="profileButton">
+          <ProfileButton />
+        </div>
       </div>
-      <input type="text" id="search" placeholder='Search destinations'/>
-      <div className="profileButton">
-        <ProfileButton />
-      </div>
-    </div>
-    <hr id="header"/>
+      <hr id="header"/>
     </>
   );
 }

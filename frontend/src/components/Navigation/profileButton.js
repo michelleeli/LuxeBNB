@@ -6,7 +6,6 @@ import './navigation.css'
 import SignupModal from "../SignupModal";
 import { clearErrors, setLoginErrors } from "../../store/errors";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -25,15 +24,6 @@ function ProfileButton() {
     dispatch(setLoginErrors([]))
     dispatch(clearErrors())
   };
-  
-  // const toggleMenu = (e) => {
-  //   e.stopPropagation()
-  //   if (showMenu === false) {
-  //     return openMenu
-  //   } else {
-  //     return closeMenu
-  //   }
-  // }
 
   const redirectRes = (e) => {
     e.stopPropagation()

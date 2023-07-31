@@ -25,9 +25,7 @@ export const fetchListings = () => async dispatch => {
     if (res.ok) {
         const data = await res.json()
         dispatch(addListings(data))
-    } else {
-        console.log('no')
-    }
+    } 
 }
 
 export const fetchListing = (listingId) => async dispatch => {

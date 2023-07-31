@@ -9,6 +9,7 @@ import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
 import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
 import { parseISO } from 'date-fns';
+import CalendarItem from './CalendarItem';
 
 export default function CalendarModal({listing}) {
   const [openCal, setOpenCal] = useState(false)
@@ -180,6 +181,7 @@ export default function CalendarModal({listing}) {
                   <button id="done" onClick={()=> setOpenCal(false)} >Done</button>
                 </div>
                 <div onClick={(e)=> e.stopPropagation()}>
+                  {/* <CalendarItem/> */}
                   <DateRange months={2} direction="horizontal" color="#D33756" minDate={new Date()} editableDateInputs={true} onChange={item => setDates([item.selection])} moveRangeOnFirstSelection={false} ranges={dates} disabledDates={reserved()}/> 
                 </div>
               </div> )}

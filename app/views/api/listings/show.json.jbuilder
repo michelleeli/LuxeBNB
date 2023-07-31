@@ -1,6 +1,6 @@
 json.listing do 
     json.set! @listing.id do
-        json.extract! @listing, :id, :title, :address, :city, :state, :price, :num_bed, :num_bath, :num_bedroom, :host_id, :max_guests, :description,
+        json.extract! @listing, :id, :title, :address, :city, :state, :price, :num_bed, :num_bath, :num_bedroom, :host_id, :max_guests, :description, :country,
         :self_checkin, :wifi, :air_condition, :pets, :tv, :parking, :washer, :kitchen
         json.host @listing.host.first_name
         json.avg_rating @listing.reviews.average(:rating)
@@ -12,8 +12,10 @@ json.listing do
         json.avg_checkin @listing.reviews.average(:check_in)
         json.review_ids @listing.reviews.pluck(:id)
         json.reservation_ids @listing.reservations.pluck(:id)
+        json.photoUrl @listing.images.attached? ? @listing.images[0].url : nil
     end 
 end 
+
 json.reviews do
     @listing.reviews.each do |review|
         json.set! review.id do

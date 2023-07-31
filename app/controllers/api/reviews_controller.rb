@@ -10,9 +10,19 @@ class Api::ReviewsController < ApplicationController
         if @review.save 
             render 'api/reviews/index'
         else 
-            render json: {errors: @reivew.errors.full_messages}, status: 422
+            render json: {errors: @review.errors.full_messages}, status: 422
         end 
     end
+
+    def update 
+        @review = Review.find_by(listing_id: params[:listing_id], user_id: params[:user_id])
+        if @review.update(review_params)
+            render 'api/reviews/show'
+        else
+            render json: {errors: @review.errors.full_messages}, status: :unprocessible_entity
+        end 
+    end 
+
 
     def destroy
         @review = Review.find(params[:id])
