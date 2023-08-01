@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation";
 import ListingIndexPage from "./components/ListingIndex";
 import ListingShowPage from "./components/ListingShow";
 import ReservationIndexPage from "./components/ReservationIndex";
+import FilteredRender from "./components/FilterMenu.js/Filtered-render";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       </Route>
       <Route exact path="/reservations">
         <ReservationIndexPage/>
+      </Route>
+      <Route exact path="/categories/:category">
+        <FilteredRender />
       </Route>
       </Switch>
   </>

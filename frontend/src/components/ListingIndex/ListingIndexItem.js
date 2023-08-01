@@ -3,7 +3,6 @@ import './ListingIndex.css'
 
 export const ListingIndexItem = ({listing}) => {
     const history = useHistory();
-    console.log(listing)
 
     const handleClick = () => {
         history.push(`/listings/${listing.id}`)

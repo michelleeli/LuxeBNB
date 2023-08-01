@@ -1,20 +1,27 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchListing } from "../../store/listings"
 import './ListingShow.css'
 import Calendar from "../Calendar"
 import ReviewIndexPage from "../Reviews"
-import MapContainer from "../Map"
+import MapWrapper from "../Map"
+import Avatar, { genConfig } from 'react-nice-avatar'
 
 export default function ListingShowPage() {
     const dispatch = useDispatch()
     const listingId = useParams().listingId
     const listing = useSelector((state) => state.entities.listings[listingId])
-    
+    const [showCarousel, setShowCarousel] = useState(false)
+    const config = genConfig() 
+
     useEffect(() => {
         dispatch(fetchListing(listingId))
     }, [listingId])
+
+    const openCarousel = () => {
+        setShowCarousel(true)
+    }
 
     return (
         <>
@@ -26,15 +33,30 @@ export default function ListingShowPage() {
                     <span><u>{listing.reviewIds?.length} reviews</u></span>
                     <span id="location">{listing.city}, {listing.state}</span>
                 </h5>
-                <img id="thumbnail" src={listing.photoUrl}></img>
-
+                <div className="showImages">
+                    <img id="thumbnail" src={listing.photoUrl}></img>
+                    <div id="miniPics">
+                        <img src={listing.photo2Url}></img>
+                        <img id="two" src={listing.photo3Url}></img>
+                        <img src={listing.photo4Url}></img>
+                        <img id="four" src={listing.photo5Url}></img>
+                    </div>
+                </div>
+                <button id="showCarousel" onClick={openCarousel}>
+                    <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
+                    <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
+                    <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
+                    <span> Show all photos</span>
+                </button>
             </div>
         )}
         <div class="ShowPage">
         {listing &&  (
         <div className="ListingShow">
-
-            <p>Hosted by {listing.host}</p>
+            <div id="host" >
+                <p>Hosted by {listing.host}</p>
+                <Avatar id="hostpfp" style={{ width: '3rem', height: '3rem' }} {...config} />
+            </div>
             <div className="numRooms">
                 <span>{listing.maxGuests} guests</span>
                 <span> • </span>
@@ -81,7 +103,7 @@ export default function ListingShowPage() {
         <Calendar listing={listing}/>
         </div>
         {listing && <ReviewIndexPage listingId={listing.id}/>}
-        {/* <MapContainer/> */}
+        <MapWrapper listing={listing} />
         </>
     )
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_181501) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_193853) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_181501) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "listing_tags", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id", "tag_id"], name: "index_listing_tags_on_listing_id_and_tag_id", unique: true
+    t.index ["listing_id"], name: "index_listing_tags_on_listing_id"
+    t.index ["tag_id"], name: "index_listing_tags_on_tag_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -99,6 +109,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_181501) do
     t.index ["listing_id"], name: "index_reviews_on_listing_id"
     t.index ["user_id", "listing_id"], name: "index_reviews_on_user_id_and_listing_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

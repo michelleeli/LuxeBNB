@@ -5,14 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require  'open-uri'
 
-ApplicationRecord.transaction do 
-    puts "Destroying tables..."
+require "open-uri"
+
+puts "Destroying tables..."
     User.destroy_all
     Listing.destroy_all
     Reservation.destroy_all
     Review.destroy_all
+    Tag.destroy_all
+    ListingTag.destroy_all
   
     puts "Deleting Active Storage attachments and blobs..."
     ActiveStorage::Attachment.delete_all
@@ -59,6 +61,13 @@ ApplicationRecord.transaction do
         return random_user.id
     end 
 
+    pool = Tag.create!(name: "pool")
+    mansion = Tag.create!(name: "mansion")
+    apartment = Tag.create!(name: "apartment")
+    island = Tag.create!(name: "island")
+    city = Tag.create!(name: "city")
+    nature = Tag.create!(name: "nature")
+
     listings = []
 
     listing6 = Listing.create!(
@@ -85,11 +94,21 @@ ApplicationRecord.transaction do
         washer: true, 
         kitchen: true)
 
-        # ["a", "b", "c", "d", "e"].forEach((char) => {
-        #     listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6#{char}.png"), filename: "listing6#{char}")
-        # })
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing6.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing6#{char}.png"), filename: "listing6#{char}")
+        end 
+
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6a.png"), filename: "listing6a")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6b.png"), filename: "listing6b")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6c.png"), filename: "listing6c")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6d.png"), filename: "listing6d")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6e.png"), filename: "listing6e")
+
+        listing_tag1 = ListingTag.create!(listing_id: listing6.id, tag_id: apartment.id)
+        listing_tag2 = ListingTag.create!(listing_id: listing6.id, tag_id: island.id)
+
         
-        listing6.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing6.jpg"), filename: "listing6")
+        # listing6.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing6.jpg"), filename: "listing6")
 
         listings << listing6
 
@@ -117,11 +136,22 @@ ApplicationRecord.transaction do
         washer: true, 
         kitchen: true
     )
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing8.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing8#{char}.png"), filename: "listing8#{char}")
-    # })
-    
-    listing8.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing8.png"), filename: "listing8")
+
+    listing_tag3 = ListingTag.create!(listing_id: listing8.id, tag_id: pool.id)
+    listing_tag4 = ListingTag.create!(listing_id: listing8.id, tag_id: island.id)
+    listing_tag5 = ListingTag.create!(listing_id: listing8.id, tag_id: nature.id)
+    listing_tag6 = ListingTag.create!(listing_id: listing8.id, tag_id: mansion.id)
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing8.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing8#{char}.png"), filename: "listing8#{char}")
+    end 
+
+    # listing8.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing8a.png"), filename: "listing8a")
+    # listing8.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing8b.png"), filename: "listing8b")
+    # listing8.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing8c.png"), filename: "listing8c")
+    # listing8.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing8d.png"), filename: "listing8d")
+    # listing8.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing8e.png"), filename: "listing8e")
+
+    # listing8.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing8.png"), filename: "listing8")
 
     listing2 = Listing.create!(
         title: "The Kellogg Doolittle House",
@@ -148,11 +178,20 @@ ApplicationRecord.transaction do
         kitchen: true
     )
 
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing2.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing2#{char}.png"), filename: "listing2#{char}")
-    # })
+    listing_tag5 = ListingTag.create!(listing_id: listing2.id, tag_id: nature.id)
+    listing_tag6 = ListingTag.create!(listing_id: listing2.id, tag_id: mansion.id)
+
+    # listing2.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing2a.png"), filename: "listing2a")
+    # listing2.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing2b.png"), filename: "listing2b")
+    # listing2.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing2c.png"), filename: "listing2c")
+    # listing2.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing2d.png"), filename: "listing2d")
+    # listing2.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing2e.png"), filename: "listing2e")
+
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing2.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing2#{char}.png"), filename: "listing2#{char}")
+    end 
     
-    listing2.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing2.png"), filename: "listing2")
+    # listing2.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing2.png"), filename: "listing2")
 
     listings << listing2
 
@@ -180,11 +219,23 @@ ApplicationRecord.transaction do
         washer: false, 
         kitchen: true
     )
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing9.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing9#{char}.png"), filename: "listing9#{char}")
-    # })
+
+    listing_tag7 = ListingTag.create!(listing_id: listing9.id, tag_id: pool.id)
+    listing_tag8 = ListingTag.create!(listing_id: listing9.id, tag_id: island.id)
+    listing_tag9 = ListingTag.create!(listing_id: listing9.id, tag_id: nature.id)
+    listing_tag10 = ListingTag.create!(listing_id: listing9.id, tag_id: mansion.id)
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing9.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing9#{char}.png"), filename: "listing9#{char}")
+    end 
+
+    # listing9.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing9a.png"), filename: "listing9a")
+    # listing9.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing9b.png"), filename: "listing9b")
+    # listing9.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing9c.png"), filename: "listing9c")
+    # listing9.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing9d.png"), filename: "listing9d")
+    # listing9.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing9e.png"), filename: "listing9e")
+
     
-    listing9.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing9.png"), filename: "listing9")
+    # listing9.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing9.png"), filename: "listing9")
 
     listing10 = Listing.create!(
         title: "Villa El Nido",
@@ -210,11 +261,23 @@ ApplicationRecord.transaction do
         washer: true, 
         kitchen: true
     )
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing10.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing10#{char}.png"), filename: "listing10#{char}")
-    # })
+
+    listing_tag11 = ListingTag.create!(listing_id: listing10.id, tag_id: pool.id)
+    listing_tag12 = ListingTag.create!(listing_id: listing10.id, tag_id: island.id)
+    listing_tag13 = ListingTag.create!(listing_id: listing10.id, tag_id: nature.id)
+    listing_tag14 = ListingTag.create!(listing_id: listing10.id, tag_id: mansion.id)
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing10.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing10#{char}.png"), filename: "listing10#{char}")
+    end 
+
+    # listing10.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing10a.png"), filename: "listing10a")
+    # listing10.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing10b.png"), filename: "listing10b")
+    # listing10.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing10c.png"), filename: "listing10c")
+    # listing10.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing10d.png"), filename: "listing10d")
+    # listing10.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing10e.png"), filename: "listing10e")
+
     
-    listing10.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing10.png"), filename: "listing10")
+    # listing10.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing10.png"), filename: "listing10")
 
     listing7 = Listing.create!(
         title: "Villa Rosana",
@@ -241,10 +304,22 @@ ApplicationRecord.transaction do
         kitchen: true
     )
 
-    listing7.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing7.png"), filename: "listing7")
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing7.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing7#{char}.png"), filename: "listing7#{char}")
-    # })
+    listing_tag15 = ListingTag.create!(listing_id: listing7.id, tag_id: pool.id)
+    listing_tag16 = ListingTag.create!(listing_id: listing7.id, tag_id: island.id)
+    listing_tag17 = ListingTag.create!(listing_id: listing7.id, tag_id: nature.id)
+    listing_tag18 = ListingTag.create!(listing_id: listing7.id, tag_id: mansion.id)
+
+    # listing7.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing7.png"), filename: "listing7")
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing7.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing7#{char}.png"), filename: "listing7#{char}")
+    end 
+
+    # listing7.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing7a.png"), filename: "listing7a")
+    # listing7.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing7b.png"), filename: "listing7b")
+    # listing7.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing7c.png"), filename: "listing7c")
+    # listing7.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing7d.png"), filename: "listing7d")
+    # listing7.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing7e.png"), filename: "listing7e")
+
     
 
     listing11 = Listing.create!(
@@ -271,12 +346,24 @@ ApplicationRecord.transaction do
         washer: true, 
         kitchen: true
     )
-    
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing11.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing11#{char}.png"), filename: "listing11#{char}")
-    # })
 
-    listing11.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing11.png"), filename: "listing11")
+    listing_tag19 = ListingTag.create!(listing_id: listing11.id, tag_id: pool.id)
+    listing_tag21 = ListingTag.create!(listing_id: listing11.id, tag_id: nature.id)
+    listing_tag20 = ListingTag.create!(listing_id: listing11.id, tag_id: mansion.id)
+
+
+    # listing11.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing11a.png"), filename: "listing11a")
+    # listing11.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing11b.png"), filename: "listing11b")
+    # listing11.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing11c.png"), filename: "listing11c")
+    # listing11.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing11d.png"), filename: "listing11d")
+    # listing11.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing11e.png"), filename: "listing11e")
+
+    
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing11.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing11#{char}.png"), filename: "listing11#{char}")
+    end 
+
+    # listing11.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing11.png"), filename: "listing11")
 
     listing12 = Listing.create!(
         title: "Villa Santa Esmeralda",
@@ -303,11 +390,24 @@ ApplicationRecord.transaction do
         kitchen: true
     )
 
-    listing12.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing12.png"), filename: "listing12")
+    listing_tag22 = ListingTag.create!(listing_id: listing12.id, tag_id: pool.id)
+    listing_tag23 = ListingTag.create!(listing_id: listing12.id, tag_id: island.id)
+    listing_tag24 = ListingTag.create!(listing_id: listing12.id, tag_id: nature.id)
+    listing_tag25 = ListingTag.create!(listing_id: listing12.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing12.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing12#{char}.png"), filename: "listing12#{char}")
-    # })
+
+    # listing12.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing12.png"), filename: "listing12")
+
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing12.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing12#{char}.png"), filename: "listing12#{char}")
+    end 
+
+    # listing12.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing12a.png"), filename: "listing12a")
+    # listing12.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing12b.png"), filename: "listing12b")
+    # listing12.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing12c.png"), filename: "listing12c")
+    # listing12.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing12d.png"), filename: "listing12d")
+    # listing12.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing12e.png"), filename: "listing12e")
+
     
     listing1 = Listing.create!(
         title: "Beverly Hills Maison",
@@ -334,11 +434,22 @@ ApplicationRecord.transaction do
         kitchen: true
     )
 
-    listing1.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing1.png"), filename: "listing1")
+    listing_tag26 = ListingTag.create!(listing_id: listing1.id, tag_id: pool.id)
+    listing_tag27 = ListingTag.create!(listing_id: listing1.id, tag_id: mansion.id)
+    listing_tag28 = ListingTag.create!(listing_id: listing1.id, tag_id: nature.id)
 
-    # ["a", "b", "c", "d", "e"].forEach((char) => {
-    #     listing1.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing1#{char}.png"), filename: "listing1#{char}")
-    # })
+    # listing1.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing1.png"), filename: "listing1")
+
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing1.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing1#{char}.png"), filename: "listing1#{char}")
+    end 
+
+    # listing1.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing1a.png"), filename: "listing1a")
+    # listing1.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing1b.png"), filename: "listing1b")
+    # listing1.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing1c.png"), filename: "listing1c")
+    # listing1.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing1d.png"), filename: "listing1d")
+    # listing1.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing1e.png"), filename: "listing1e")
+
     
     listings << listing1
 
@@ -366,13 +477,23 @@ ApplicationRecord.transaction do
         washer: true, 
         kitchen: true)
 
-        # ["a", "b", "c", "d", "e"].forEach((char) => {
-        #     listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3#{char}.png"), filename: "listing3#{char}")
-        # })
-        
-        listing3.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing3.png"), filename: "listing3")
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing3.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing3#{char}.png"), filename: "listing3#{char}")
+        end 
+
+        # listing3.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing3.png"), filename: "listing3")
+        listing_tag29 = ListingTag.create!(listing_id: listing3.id, tag_id: pool.id)
+        listing_tag30 = ListingTag.create!(listing_id: listing3.id, tag_id: mansion.id)
+        listing_tag31 = ListingTag.create!(listing_id: listing3.id, tag_id: nature.id)
+        listing_tag32 = ListingTag.create!(listing_id: listing3.id, tag_id: island.id)
 
         listings << listing3
+
+        # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3a.png"), filename: "listing3a")
+        # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3b.png"), filename: "listing3b")
+        # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3c.png"), filename: "listing3c")
+        # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3d.png"), filename: "listing3d")
+        # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3e.png"), filename: "listing3e")
 
 
 
@@ -401,11 +522,22 @@ ApplicationRecord.transaction do
         washer: false, 
         kitchen: true)
 
-        listing4.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing4.png"), filename: "listing4")
+        # listing4.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing4.png"), filename: "listing4")
 
-        # ["a", "b", "c", "d", "e"].forEach((char) => {
-        #     listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4#{char}.png"), filename: "listing4#{char}")
-        # })
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing4.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing4#{char}.png"), filename: "listing4#{char}")
+        end 
+
+        listing_tag33 = ListingTag.create!(listing_id: listing4.id, tag_id: city.id)
+        listing_tag34 = ListingTag.create!(listing_id: listing4.id, tag_id: apartment.id)
+        listing_tag35 = ListingTag.create!(listing_id: listing4.id, tag_id: pool.id)
+
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4a.png"), filename: "listing4a")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4b.png"), filename: "listing4b")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4c.png"), filename: "listing4c")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4d.png"), filename: "listing4d")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4e.png"), filename: "listing4e")
+
         
         listings << listing4
 
@@ -433,12 +565,21 @@ ApplicationRecord.transaction do
         washer: false, 
         kitchen: true)
 
-        listing5.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing5.jpg"), filename: "listing5")
+        listing_tag36 = ListingTag.create!(listing_id: listing5.id, tag_id: city.id)
+        listing_tag37 = ListingTag.create!(listing_id: listing5.id, tag_id: apartment.id)
+        listing_tag38 = ListingTag.create!(listing_id: listing5.id, tag_id: pool.id)
+
+        # listing5.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing5.jpg"), filename: "listing5")
         
-        # ["a", "b", "c", "d", "e"].forEach((char) => {
-        #     listing5.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing5#{char}.png"), filename: "listing5#{char}")
-        # })
-        
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing5.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing5#{char}.png"), filename: "listing5#{char}")
+        end 
+
+        # listing5.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing5a.png"), filename: "listing5a")
+        # listing5.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing5b.png"), filename: "listing5b")
+        # listing5.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing5c.png"), filename: "listing5c")
+        # listing5.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing5d.png"), filename: "listing5d")
+        # listing5.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing5e.png"), filename: "listing5e")
 
         listings << listing5
 
@@ -499,7 +640,6 @@ ApplicationRecord.transaction do
         guests: 6,
         total: 58800
         )
-
     
 
     puts "Done!"
@@ -805,5 +945,4 @@ ApplicationRecord.transaction do
         listing_id: listing12.id
         )
 
-          
- end 
+        

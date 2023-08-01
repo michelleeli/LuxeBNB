@@ -4,12 +4,11 @@ import './calendar.css'
 import { DateRange } from 'react-date-range';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createReservation } from '../../store/reservations';
+import { createReservation, fetchReservations } from '../../store/reservations';
 import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
 import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
 import { parseISO } from 'date-fns';
-import CalendarItem from './CalendarItem';
 
 export default function CalendarModal({listing}) {
   const [openCal, setOpenCal] = useState(false)
@@ -25,6 +24,10 @@ export default function CalendarModal({listing}) {
   const [error, setError] = useState(false)
 
   const reservations = useSelector((state) => state.entities.reservations)
+
+  useEffect(()=> {
+    dispatch(fetchReservations())
+  }, [])
 
   useEffect(()=> {
     setLoggedOut(!currentUser)
@@ -152,7 +155,9 @@ export default function CalendarModal({listing}) {
         date = (d.toISOString().substr(0,10))
       }
     })
+
     return dates;
+
   }
 
   return (
@@ -181,7 +186,6 @@ export default function CalendarModal({listing}) {
                   <button id="done" onClick={()=> setOpenCal(false)} >Done</button>
                 </div>
                 <div onClick={(e)=> e.stopPropagation()}>
-                  {/* <CalendarItem/> */}
                   <DateRange months={2} direction="horizontal" color="#D33756" minDate={new Date()} editableDateInputs={true} onChange={item => setDates([item.selection])} moveRangeOnFirstSelection={false} ranges={dates} disabledDates={reserved()}/> 
                 </div>
               </div> )}
@@ -258,7 +262,3 @@ export default function CalendarModal({listing}) {
     )
       
 }
-
-
-
-// [parseISO("2023-07-29")]

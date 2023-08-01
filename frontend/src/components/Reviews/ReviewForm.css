@@ -1,6 +1,5 @@
-input[type="radio"] {
+.reviewForm input[type="radio"] {
     width: 1.5vw;
-
 }
 
 .reviewForm > * {
@@ -17,16 +16,17 @@ input[type="radio"] {
     font-size: 23px;
     padding: 0.5vw;
     transition: all 0.2 ease;
-    color: #fd4
-}
-
-.reviewForm label:hover{
-    color: #fd4
+    color: rgb(255, 191, 0)
 }
 
 .reviewForm label:hover ~label {
     color: grey
 }
+
+.reviewForm input[type="radio"]:checked+label ~label{
+    color: grey
+}
+
 
 #rating h4 {
     font-size: 20px;
@@ -46,4 +46,8 @@ input[type="radio"] {
 
 #reviewer {
     font-weight: 700;
+}
+
+.reviewForm input[type="radio"] {
+    display: none;
 }

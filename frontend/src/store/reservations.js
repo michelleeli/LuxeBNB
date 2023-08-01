@@ -27,9 +27,6 @@ export const fetchReservations = () => async dispatch => {
         const data = await res.json()
         dispatch(addReservations(data))
     } 
-    // else {
-    //     console.log('no')
-    // }
 }
 
 export const fetchReservation = (reservationId) => async dispatch => {

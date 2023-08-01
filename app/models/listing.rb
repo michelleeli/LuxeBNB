@@ -24,6 +24,9 @@
 #  host_id       :bigint
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  country       :string
+#  lng           :float
+#  lat           :float
 #
 
 class Listing < ApplicationRecord
@@ -42,6 +45,12 @@ class Listing < ApplicationRecord
 
     has_many :reviews,
         dependent: :destroy
+
+    has_many :listing_tags
+
+    has_many :tags,
+        through: :listing_tags,
+        source: :tag
     
     has_many_attached :images
 end

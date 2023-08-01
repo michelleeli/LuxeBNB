@@ -57,7 +57,60 @@ h5 > *{
 }
 
 #thumbnail {
-    width: 50%;
+    width: 44%;
     border-bottom-left-radius: 15px;
     border-top-left-radius: 15px;
+    margin-right: 0.5vw;
+}
+
+.showImages {
+    display: flex;
+    height: 51vh;
+}
+
+img#two {
+    border-top-right-radius: 15px;
+}
+
+img#four {
+    border-bottom-right-radius: 15px;
+}
+
+#miniPics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.5vw;
+    row-gap: 0.5vw;
+    margin-right: 12vw;
+    border-top-right-radius: 15px;
+}
+
+#showCarousel {
+    position: absolute;
+    width: 11vw;
+    right: 14vw;
+    height: 2.5vw;
+    border: 1px black solid;
+    border-radius: 10px;
+    transform: translateY(-7vh);
+    font-weight: 500;
+}
+
+#showCarousel i {
+    margin-right: 1.5px;
+}
+
+#miniPics img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#host {
+    display: flex;
+    justify-content: space-between;
+}
+
+#hostpfp {
+    transform: translateY(3vh);
 }
