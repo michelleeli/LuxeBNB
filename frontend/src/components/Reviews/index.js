@@ -16,7 +16,6 @@ export default function ReviewIndexPage({listingId}) {
         }
     }, [reviews])
 
-
     return (
         <div className="review">
             <hr/>
@@ -30,42 +29,42 @@ export default function ReviewIndexPage({listingId}) {
                     <div>Cleanliness</div>
                     <div>
                         <progress max="5" value={listing.avgClean}></progress>
-                        <span>{listing.avgClean.slice(0,3)}</span>
+                        <span>{listing.avgClean?.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Accuracy</div> 
                     <div>
                         <progress max="5" value={listing.avgAcc}></progress>
-                        <span>{listing.avgAcc.slice(0,3)}</span>
+                        <span>{listing.avgAcc?.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Communication</div> 
                     <div>
                         <progress max="5" value={listing.avgComm}></progress>
-                        <span>{listing.avgComm.slice(0,3)}</span>
+                        <span>{listing.avgComm?.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Location</div> 
                     <div>
                         <progress max="5" value={listing.avgLoc}></progress>
-                        <span>{listing.avgLoc.slice(0,3)}</span>
+                        <span>{listing.avgLoc?.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Check-in</div>
                     <div>
                         <progress max="5" value={listing.avgCheckin}></progress>
-                        <span>{listing.avgCheckin.slice(0,3)}</span>
+                        <span>{listing.avgCheckin?.slice(0,3)}</span>
                     </div>
                 </div>
                 <div className="factor">
                     <div>Value</div> 
                     <div>
                         <progress max="5" value={listing.avgVal}></progress>
-                        <span>{listing.avgVal.slice(0,3)}</span>
+                        <span>{listing.avgVal?.slice(0,3)}</span>
                     </div>
                 </div>
             </div>)}

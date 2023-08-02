@@ -12,16 +12,16 @@ export default function ListingShowPage() {
     const dispatch = useDispatch()
     const listingId = useParams().listingId
     const listing = useSelector((state) => state.entities.listings[listingId])
-    const [showCarousel, setShowCarousel] = useState(false)
+    // const [showCarousel, setShowCarousel] = useState(false)
     const config = genConfig() 
 
     useEffect(() => {
         dispatch(fetchListing(listingId))
     }, [listingId])
 
-    const openCarousel = () => {
-        setShowCarousel(true)
-    }
+    // const openCarousel = () => {
+    //     setShowCarousel(true)
+    // }
 
     return (
         <>
@@ -42,12 +42,12 @@ export default function ListingShowPage() {
                         <img id="four" src={listing.photo5Url}></img>
                     </div>
                 </div>
-                <button id="showCarousel" onClick={openCarousel}>
+                {/* <button id="showCarousel" onClick={openCarousel}>
                     <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
                     <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
                     <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
                     <span> Show all photos</span>
-                </button>
+                </button> */}
             </div>
         )}
         <div class="ShowPage">
@@ -103,7 +103,12 @@ export default function ListingShowPage() {
         <Calendar listing={listing}/>
         </div>
         {listing && <ReviewIndexPage listingId={listing.id}/>}
-        <MapWrapper listing={listing} />
+        <div id="showPageMap">
+            <hr/>
+            <h3>Where you'll be </h3>
+            <MapWrapper listings={[listing]} />
+        </div>
+
         </>
     )
 }

@@ -70,48 +70,6 @@ puts "Destroying tables..."
 
     listings = []
 
-    listing6 = Listing.create!(
-        title: "The Charles",
-        address: "1355 First Ave",
-        description: "A townhouse in the sky, this world-class property features approximately 12,000 square feet of interior space expanding over four private floors, complimented by 1,500 square feet of terraces, which capture breathtaking 360-degree views. Conceptualized to provide the finest quality of design and artisanship, the layout of this property is notably perfect for both intimate experiences and grand scale entertainment. A work of art in and of itself, a distinguished staircase serves as the centerpiece of the home, adorned with a dramatic custom chandelier that spans all four floors and reflects the spectacular New York City skyline.",
-        city: "New York",
-        state: "New York",
-        country: "United States",
-        lat: 40.76850325660143,
-        lng: -73.95597966088339,
-        num_bedroom: 8,
-        num_bath: 8,
-        num_bed: 8,
-        max_guests: 16,
-        price: 3928,
-        host_id: randomUser(users),
-        self_checkin: true, 
-        wifi: true, 
-        air_condition: true, 
-        pets: false, 
-        tv: true, 
-        parking: true, 
-        washer: true, 
-        kitchen: true)
-
-        ["a", "b", "c", "d", "e"].each do |char|
-            listing6.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing6#{char}.png"), filename: "listing6#{char}")
-        end 
-
-        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6a.png"), filename: "listing6a")
-        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6b.png"), filename: "listing6b")
-        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6c.png"), filename: "listing6c")
-        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6d.png"), filename: "listing6d")
-        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6e.png"), filename: "listing6e")
-
-        listing_tag1 = ListingTag.create!(listing_id: listing6.id, tag_id: apartment.id)
-        listing_tag2 = ListingTag.create!(listing_id: listing6.id, tag_id: island.id)
-
-        
-        # listing6.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing6.jpg"), filename: "listing6")
-
-        listings << listing6
-
     listing8 = Listing.create!(
         title: "Pearl West",
         address: "245 Longbay Beach Drive",
@@ -583,6 +541,180 @@ puts "Destroying tables..."
 
         listings << listing5
 
+    listing13 = Listing.create!(
+        title: "Elementi",
+        address: "Via Armando Diaz, 40, 22017 ",
+        description: "Elementi is a truly unique and magnificent contemporary property, which boasts a dramatic location in the triangle of Lake Como’s three branches, where it sits centrally between Bellagio, Menaggio and Varenna.        The undoubtable character and luxury of Elementi emanates both inside and out, and once one has arrived it really is difficult to leave. With its enviable position right on the lake shore with beautifully finished decking and private boat dock, guests will cherish the luxury of exploring and moving around by boat. Once you have reached Elementi one’s car can be closed safely in the garage and guests can switch off, relax and savour this magical destination.",
+        city: "Menaggio",
+        state: "Lombardia",
+        country: "Italy",
+        lat: 46.03270356879532, 
+        lng: 9.237163542948707,
+        num_bedroom: 8,
+        num_bath: 8,
+        num_bed: 8,
+        max_guests: 16,
+        price: 10707,
+        host_id: randomUser(users),
+        self_checkin: true, 
+        wifi: true, 
+        air_condition: true, 
+        pets: true, 
+        tv: true, 
+        parking: false, 
+        washer: true, 
+        kitchen: true)
+
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing13.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing13#{char}.png"), filename: "listing13#{char}")
+        end 
+
+        listing_tag39 = ListingTag.create!(listing_id: listing13.id, tag_id: island.id)
+        listing_tag40 = ListingTag.create!(listing_id: listing13.id, tag_id: pool.id)
+        listing_tag41 = ListingTag.create!(listing_id: listing13.id, tag_id: nature.id)
+        listing_tag42 = ListingTag.create!(listing_id: listing13.id, tag_id: mansion.id)
+
+listing14 = Listing.create!(
+    title: "Enjoy Eiffel Tower Sparkle in Grand Style!",
+    address: "149 Av. de Suffren, 75015 Paris",
+    description: "Only a few apartments in Paris feature a spectacular view of the Eiffel from so close that you'll feel like you can reach out and touch it! Our romantic Viognier apartment offers this unbeatable Paris view, along with a luxurious setting in one of the most sought-after areas in the Left Bank's 7th arrondissement. The highlight of your day in Paris will be returning home to this spacious two-bedroom, three-bathroom rental that comfortably sleeps up to five people.",
+    city: "Paris",
+    state: "Île-de-France",
+    country: "France",
+    lat: 48.84709969889134, 
+    lng: 2.308001953029804,
+    num_bedroom: 2,
+    num_bath: 3,
+    num_bed: 4,
+    max_guests: 6,
+    price: 1935,
+    host_id: randomUser(users),
+    self_checkin: true, 
+    wifi: true, 
+    air_condition: true, 
+    pets: false, 
+    tv: true, 
+    parking: false, 
+    washer: false, 
+    kitchen: true)
+
+
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing14.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing14#{char}.png"), filename: "listing14#{char}")
+    end 
+
+    listing_tag43 = ListingTag.create!(listing_id: listing14.id, tag_id: city.id)
+    listing_tag44 = ListingTag.create!(listing_id: listing14.id, tag_id: apartment.id)
+
+    listing15 = Listing.create!(
+        title: "Maid Opera Grand - Downtown Dubai",
+        address: "57V9+7PC",
+        description: "Welcome to the perfect combination of luxury and culture. Opera Grand is located in the prestigious Opera District. It features luxury hotels, elegant residences, retail spaces, waterfront promenades, leisure facilities and parks. Within walking distance of the Opera Grand is the Burj Khalifa/Dubai Mall metro station (15 minutes from the complex), the Burj Khalifa skyscraper, the gallery of singing fountains and major shopping and entertainment centre's Dubai Mall and Souk Al Bahar.",
+        city: "Downtown Dubami",
+        state: "Dubai",
+        country: "United Arab Emirates",
+        lat: 25.193430833650186,  
+        lng: 55.269195293673924,
+        num_bedroom: 4,
+        num_bath: 6,
+        num_bed: 1,
+        max_guests: 4,
+        price: 1699,
+        host_id: randomUser(users),
+        self_checkin: true, 
+        wifi: true, 
+        air_condition: true, 
+        pets: false, 
+        tv: true, 
+        parking: false, 
+        washer: false, 
+        kitchen: true)
+
+
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing15.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing15#{char}.png"), filename: "listing15#{char}")
+    end 
+
+    listing_tag45 = ListingTag.create!(listing_id: listing15.id, tag_id: city.id)
+    listing_tag46 = ListingTag.create!(listing_id: listing15.id, tag_id: apartment.id)
+
+    listing16 = Listing.create!(
+        title: "5 Elements Villa",
+        address: "Ko Pha-ngan District, Surat Thani 84280",
+        description: "A symphony of waves, eagles, and rustling palms greet you at this brand-new villa. Located in Tong Lang, the property is surrounded by dense jungle foliage. The infinity pool mimics the Gulf of Thailand as it melts into the horizon. You’ll discover a vibrant snorkeling spot just steps from the backyard. Catch a flick in the in-house cinema or treat yourself to a massage and ice bath at the spa.",
+        city: "Tambon Ko Pha-ngan",
+        state: "Thailand",
+        country: "Thailand",
+        lat: 9.79488823155702, 
+        lng: 99.97938658520017,
+        num_bedroom: 6,
+        num_bath: 6,
+        num_bed: 6,
+        max_guests: 12,
+        price: 1327,
+        host_id: randomUser(users),
+        self_checkin: true, 
+        wifi: true, 
+        air_condition: true, 
+        pets: false, 
+        tv: true, 
+        parking: false, 
+        washer: true, 
+        kitchen: true)
+
+
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing16.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing16#{char}.png"), filename: "listing16#{char}")
+    end 
+
+    listing_45 = ListingTag.create!(listing_id: listing16.id, tag_id: nature.id)
+    listing_46 = ListingTag.create!(listing_id: listing16.id, tag_id: mansion.id)
+    listing_46 = ListingTag.create!(listing_id: listing16.id, tag_id: pool.id)
+
+
+    listing6 = Listing.create!(
+        title: "The Charles",
+        address: "1355 First Ave",
+        description: "A townhouse in the sky, this world-class property features approximately 12,000 square feet of interior space expanding over four private floors, complimented by 1,500 square feet of terraces, which capture breathtaking 360-degree views. Conceptualized to provide the finest quality of design and artisanship, the layout of this property is notably perfect for both intimate experiences and grand scale entertainment. A work of art in and of itself, a distinguished staircase serves as the centerpiece of the home, adorned with a dramatic custom chandelier that spans all four floors and reflects the spectacular New York City skyline.",
+        city: "New York",
+        state: "New York",
+        country: "United States",
+        lat: 40.76850325660143,
+        lng: -73.95597966088339,
+        num_bedroom: 8,
+        num_bath: 8,
+        num_bed: 8,
+        max_guests: 16,
+        price: 3928,
+        host_id: randomUser(users),
+        self_checkin: true, 
+        wifi: true, 
+        air_condition: true, 
+        pets: false, 
+        tv: true, 
+        parking: true, 
+        washer: true, 
+        kitchen: true)
+
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing6.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing6#{char}.png"), filename: "listing6#{char}")
+        end 
+
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6a.png"), filename: "listing6a")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6b.png"), filename: "listing6b")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6c.png"), filename: "listing6c")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6d.png"), filename: "listing6d")
+        # listing6.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing6e.png"), filename: "listing6e")
+
+        listing_tag1 = ListingTag.create!(listing_id: listing6.id, tag_id: apartment.id)
+        listing_tag2 = ListingTag.create!(listing_id: listing6.id, tag_id: island.id)
+        listing_tag50 = ListingTag.create!(listing_id: listing6.id, tag_id: city.id)
+
+        
+        # listing6.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing6.jpg"), filename: "listing6")
+
+        listings << listing6
+
     puts "Done!"
 
     puts "Creating reservations..."
@@ -945,4 +1077,106 @@ puts "Destroying tables..."
         listing_id: listing12.id
         )
 
-        
+    review23 = Review.create!(
+        body: "A magnificent villa with unbeatable lake views. Elementi offers a luxurious setting right on the lake shore, with a private boat dock for exploring the surrounding areas. The spacious rooms and decking are beautifully finished, providing a comfortable and relaxing stay. We enjoyed the convenience of switching off and savouring this magical destination. Highly recommended for a memorable and serene vacation!",
+        cleanliness: 5,
+        communication: 5,
+        check_in: 5,
+        accuracy: 5,
+        location: 5,
+        value: 5,
+        rating: 5.0,
+        user_id: randomUser(users),
+        listing_id: listing13.id
+        )
+
+    review24 = Review.create!(
+        body: "A romantic apartment with a stunning Eiffel Tower view. The highlight of our day in Paris was returning to this spacious rental with a spectacular view of the iconic landmark. The apartment comfortably accommodated our group, and we enjoyed the luxurious setting. The location in the Left Bank's 7th arrondissement was perfect for exploring the city. A charming and delightful stay!",
+        cleanliness: 5,
+        communication: 5,
+        check_in: 5,
+        accuracy: 5,
+        location: 5,
+        value: 4,
+        rating: 4.8,
+        user_id: randomUser(users),
+        listing_id: listing14.id
+        )
+
+    review25 = Review.create!(
+        body: "A luxurious and cultural experience. Maid Opera Grand is perfectly situated in the prestigious Opera District, offering a combination of luxury and culture. The apartment was well-appointed and comfortable, providing all the necessary amenities. The location allowed us to explore major shopping centers, parks, and entertainment areas with ease. We had a wonderful time in Dubai and would love to visit again!",
+        cleanliness: 5,
+        communication: 5,
+        check_in: 5,
+        accuracy: 5,
+        location: 5,
+        value: 4,
+        rating: 4.8,
+        user_id: randomUser(users),
+        listing_id: listing15.id
+        )
+
+    review26 = Review.create!(
+        body: "A tropical paradise with a symphony of nature. 5 Elements Villa offers an unforgettable experience surrounded by nature's wonders. The infinity pool and dense jungle foliage created a serene and peaceful ambiance. We loved exploring the vibrant snorkeling spot just steps away from the backyard. The in-house cinema and spa were excellent additions to our stay. Highly recommended for a rejuvenating and tropical vacation!",
+        cleanliness: 5,
+        communication: 5,
+        check_in: 5,
+        accuracy: 5,
+        location: 5,
+        value: 5,
+        rating: 5.0,
+        user_id: randomUser(users),
+        listing_id: listing16.id
+        )
+
+    review27 = Review.create!(
+        body: "A perfect Parisian experience. The view of the Eiffel Tower from Viognier apartment was truly magical. We enjoyed the spacious layout and the comfortable furnishings. The location in the Left Bank's 7th arrondissement was ideal, with easy access to iconic landmarks and charming streets. We had a memorable stay and would recommend it to anyone seeking a grand style in Paris!",
+        cleanliness: 5,
+        communication: 5,
+        check_in: 5,
+        accuracy: 5,
+        location: 5,
+        value: 5,
+        rating: 5.0,
+        user_id: randomUser(users),
+        listing_id: listing14.id
+        )
+
+    review28 = Review.create!(
+        body: "Luxury in the heart of Dubai. Maid Opera Grand provided an exceptional stay in the vibrant city of Dubai. The apartment was well-maintained and offered all the modern amenities. The location in the prestigious Opera District was convenient for exploring the city's attractions. We loved the waterfront promenades and leisure facilities nearby. A memorable stay in the heart of the city!",
+        cleanliness: 5,
+        communication: 5,
+        check_in: 5,
+        accuracy: 5,
+        location: 5,
+        value: 5,
+        rating: 5.0,
+        user_id: randomUser(users),
+        listing_id: listing15.id
+        )
+
+    review29 = Review.create!(
+        body: "Mixed feelings about our stay. While the view of the Eiffel Tower was indeed stunning, the apartment lacked some essential amenities. We faced issues with cleanliness, and the communication with the host was not very responsive. The value for the price paid was not as expected. The location, however, was excellent for exploring Paris. Overall, an average experience.",
+        cleanliness: 3,
+        communication: 3,
+        check_in: 4,
+        accuracy: 4,
+        location: 5,
+        value: 3,
+        rating: 3.6,
+        user_id: randomUser(users),
+        listing_id: listing14.id
+        )
+
+    review30 = Review.create!(
+        body: "Disappointing experience. We had high expectations for Maid Opera Grand, but unfortunately, the reality fell short. The apartment was not as clean as expected, and the amenities were lacking. The lack of parking was inconvenient, and the neighborhood felt overcrowded. While the location was central, the overall experience was not worth the price. We would consider other options for our next visit.",
+        cleanliness: 2,
+        communication: 3,
+        check_in: 3,
+        accuracy: 3,
+        location: 4,
+        value: 2,
+        rating: 2.8,
+        user_id: randomUser(users),
+        listing_id: listing15.id
+        )

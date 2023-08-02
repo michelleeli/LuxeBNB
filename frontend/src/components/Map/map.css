@@ -1,4 +1,29 @@
-#mapcontainer {
-  margin-left: 10vw;
-  padding-right: 10vw;
+#mapcontainer #map{
+  width: 100%;
+  height: 750px;
+}
+
+#activeListing {
+  display: block;
+  width: 100px;
+  background-color: black;
+  color: white;
+  position:absolute;
+}
+
+.mapListingDetails {
+  display: block;
+  background-color: white;
+  width: 19vw;
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mapListingDetails img{
+  width: 15vw;
+}
+
+#modalImg {
+  width: 20vw;
 }

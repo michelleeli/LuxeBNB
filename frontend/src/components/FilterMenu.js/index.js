@@ -46,5 +46,6 @@ export default function FilterMenu () {
                 <div>Island</div>
             </div>
         </div>
+
     )
 }

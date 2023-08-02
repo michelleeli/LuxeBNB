@@ -16,7 +16,7 @@ export const ReservationIndexItem = ({reservation}) => {
     const [reviewType, setReviewType] = useState("Create")
     const review = useSelector(getReview(reservation.listingId, currentUserId))
     const history = useHistory()
-    
+
     useEffect(()=> {
         if (review) {
             setReviewType("Update")

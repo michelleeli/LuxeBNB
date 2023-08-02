@@ -70,6 +70,7 @@ h5 > *{
 
 img#two {
     border-top-right-radius: 15px;
+    max-height: 28vh;
 }
 
 img#four {
@@ -113,4 +114,11 @@ img#four {
 
 #hostpfp {
     transform: translateY(3vh);
+}
+
+#showPageMap {
+    width: 80%;
+    margin: auto;
+    height: 550px;
+    overflow: hidden;
 }

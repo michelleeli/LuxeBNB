@@ -7,7 +7,6 @@ export default function Calendar({listing}) {
         <div class="Calendar">
             <p id="priceDisplay"><b>${listing && (listing.price.toLocaleString())}</b> night</p>
             <CalendarModal listing={listing}/>
-
         </div>
     )
 }

@@ -54,13 +54,15 @@
     padding: 1vw;
     width: 15vw;
     margin-top: 5vh;
+    border: 1px dotted grey;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom: none;
 }
 
 #cancel:hover {
     background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
     color: white;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
 }
 
 #been {

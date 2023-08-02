@@ -26,10 +26,6 @@ export default function CalendarModal({listing}) {
   const reservations = useSelector((state) => state.entities.reservations)
 
   useEffect(()=> {
-    dispatch(fetchReservations())
-  }, [])
-
-  useEffect(()=> {
     setLoggedOut(!currentUser)
   }, [currentUser])
 
@@ -145,7 +141,8 @@ export default function CalendarModal({listing}) {
 
   const reserved = () => {
     let dates = []
-    Object.values(reservations)?.forEach (reservation => {
+    debugger
+    Object.values(reservations).forEach (reservation => {
       let start = reservation.startDate;
       let d = new Date(start)
       let date = start
