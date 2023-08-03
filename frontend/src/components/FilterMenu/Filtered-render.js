@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { fetchListings } from "../../store/listings";
 import ListingIndex from '../ListingIndex/ListingIndex';
 import { useParams } from "react-router-dom";
+import FilterMenu from ".";
 
 export default function FilteredRender() {
     const category = useParams().category
@@ -16,7 +17,8 @@ export default function FilteredRender() {
     const selected = (listings.filter(listing => listing.tags.includes(category)))
     
     return (
+        <>
         <ListingIndex listings={selected}/>
+        </>
     )
-
 }

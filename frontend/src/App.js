@@ -3,7 +3,8 @@ import Navigation from "./components/Navigation";
 import ListingIndexPage from "./components/ListingIndex";
 import ListingShowPage from "./components/ListingShow";
 import ReservationIndexPage from "./components/ReservationIndex";
-import FilteredRender from "./components/FilterMenu.js/Filtered-render";
+import FilteredRender from "./components/FilterMenu/Filtered-render";
+import Search from "./components/SearchShowPage";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       <Route exact path="/">
         <ListingIndexPage/>
       </Route>
+      <Route path='/search'>
+        <Search/>
+      </Route>
       <Route path="/listings/:listingId">
         <ListingShowPage />
       </Route>
@@ -22,7 +26,7 @@ function App() {
         <ReservationIndexPage/>
       </Route>
       <Route exact path="/categories/:category">
-        <FilteredRender />
+        <FilteredRender/>
       </Route>
       </Switch>
   </>

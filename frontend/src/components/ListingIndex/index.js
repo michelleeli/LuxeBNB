@@ -4,6 +4,7 @@ import { fetchListings } from "../../store/listings";
 import ListingIndex from './ListingIndex'
 import { useState } from "react";
 import MapWrapper from "../Map";
+import FilterMenu from "../FilterMenu";
 
 export default function ListingIndexPage() {
     const listings = useSelector((state) => Object.values(state.entities.listings))
@@ -24,11 +25,14 @@ export default function ListingIndexPage() {
 
     return (
         <>
-        {!openMap && (<div className="listingIndex">
+        {!openMap && (
+            <>
+            <FilterMenu/>
+            <div className="listingIndex">
             <ListingIndex listings={listings}/>
-            <button id="show" onClick={showMap}>Show Map  <i className="fa-solid fa-map" style={{color: "#ffffff",}}/>
-</button>
-        </div>)}
+            <button id="show" onClick={showMap}>Show Map  <i className="fa-solid fa-map" style={{color: "#ffffff",}}/></button>
+        </div>
+        </>)}
         {openMap && (<div className="mapIndex">
             <MapWrapper listings={listings}/>
             <button id="show" onClick={showList}>Show List <i className="fa-solid fa-list" style={{color: "#ffffff",}}/></button>

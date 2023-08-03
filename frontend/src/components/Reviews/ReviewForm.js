@@ -1,7 +1,7 @@
 import './ReviewForm.css'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createReview } from '../../store/reviews'
+import { createReview, fetchReviews } from '../../store/reviews'
 import { updateReview } from '../../store/reviews'
 import { useEffect } from 'react'
 import { getReview } from '../../store/reviews'
@@ -18,7 +18,11 @@ export default function ReviewForm({reservation}) {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user)
     const [reviewType, setReviewType] = useState("Create")
-    const review = useSelector(getReview(reservation.listingId, currentUser.id))
+    const review = useSelector(getReview(reservation.listing_id, currentUser.id))
+
+    useEffect(()=> {
+        dispatch(fetchReviews())
+    }, [])
 
     useEffect(()=> {
         if (review) {
@@ -176,7 +180,7 @@ export default function ReviewForm({reservation}) {
     const submitReview = (e) => {
         e.preventDefault()
         if (reviewType === "Create") {
-            dispatch(createReview({body: body, 
+            if (!dispatch(createReview({body: body, 
                 cleanliness: cleanliness, 
                 communication:communication, 
                 check_in: checkin, 
@@ -185,7 +189,8 @@ export default function ReviewForm({reservation}) {
                 value:value, 
                 rating: rating, 
                 user_id:currentUser.id, 
-                listing_id:reservation.listingId}))
+                listing_id:reservation.listing_id})))
+                console.log("required")
             }
         else {
             dispatch(updateReview({body: body, 
@@ -197,7 +202,7 @@ export default function ReviewForm({reservation}) {
                 value:value, 
                 rating: rating, 
                 user_id:currentUser.id, 
-                listing_id:reservation.listingId}))
+                listing_id:reservation.listing_id}))
         }        
         document.elementFromPoint(10, 10).click();
     }
@@ -252,7 +257,7 @@ export default function ReviewForm({reservation}) {
                 {createQuestions("Value", setValue)}
                 </div>
                 <div>
-                    <h4>Write a review</h4>
+                    <h4>Tell us about your experience:</h4>
                     <textarea id="body" value= {body} required onChange={submitBody}/>
                 </div>
                 <br/>

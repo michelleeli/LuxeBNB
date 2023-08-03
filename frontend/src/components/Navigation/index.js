@@ -3,6 +3,7 @@ import ProfileButton from './profileButton';
 import './navigation.css'
 import "/Users/michelleli/Desktop/LuxeBNB/frontend/src/assets/ABNB.png"
 import { useHistory } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 function Navigation() {
   const history = useHistory()
@@ -18,7 +19,7 @@ function Navigation() {
           <img id="logoimage" src={require("../../assets/ABNB.png")} />
           <p id="logoname">luxebnb</p>
         </div>
-        <input type="text" id="search" placeholder='Search destinations'/>
+        <SearchBar />
         <div className="profileButton">
           <ProfileButton />
         </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Wrapper } from '@googlemaps/react-wrapper';
 import './map.css'
 import { useHistory } from 'react-router-dom/';
