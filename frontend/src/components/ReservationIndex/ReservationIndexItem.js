@@ -9,12 +9,12 @@ import { useHistory } from "react-router-dom";
 
 export const ReservationIndexItem = ({reservation}) => {
     const dispatch = useDispatch()
-    const listing = useSelector((state) => state.entities.listings[reservation.listingId])
-    const future = (new Date(reservation.startDate) > new Date ())
+    const listing = useSelector((state) => state.entities.listings[reservation.listing_id])
+    const future = (new Date(reservation.start_date) > new Date ())
     const [openReview, setOpenReview] = useState(false)
     const currentUserId = useSelector(state => state.session.user).id
     const [reviewType, setReviewType] = useState("Create")
-    const review = useSelector(getReview(reservation.listingId, currentUserId))
+    const review = useSelector(getReview(reservation.listing_id, currentUserId))
     const history = useHistory()
 
     useEffect(()=> {
@@ -25,8 +25,8 @@ export const ReservationIndexItem = ({reservation}) => {
 
 
     useEffect(()=>{
-        dispatch(fetchListing(reservation.listingId))
-    }, [reservation.listingId])
+        dispatch(fetchListing(reservation.listing_id))
+    }, [reservation.listing_id])
 
     const deleteRes = () => {
         if (reservation) {
@@ -68,7 +68,7 @@ export const ReservationIndexItem = ({reservation}) => {
                 <span id="hostedBy">Hosted by {listing.host}</span>
                 <hr id="upcomingHr"/>
                 <div className="dateAddress">
-                    <p id="startDate">{reservation.startDate}</p>
+                    <p id="startDate">{reservation.start_date}</p>
                     <p id="address">{listing.address} {listing.city}, {listing.state}</p>
                 </div>
             </div>

@@ -7,24 +7,36 @@ import Calendar from "../Calendar"
 import ReviewIndexPage from "../Reviews"
 import MapWrapper from "../Map"
 import Avatar, { genConfig } from 'react-nice-avatar'
+import ImageCarousel from "../Carousel.js/carousel"
+import { Modal } from '../../context/Modal';
 
 export default function ListingShowPage() {
     const dispatch = useDispatch()
     const listingId = useParams().listingId
     const listing = useSelector((state) => state.entities.listings[listingId])
-    // const [showCarousel, setShowCarousel] = useState(false)
+    const [showCarousel, setShowCarousel] = useState(false)
     const config = genConfig() 
 
     useEffect(() => {
         dispatch(fetchListing(listingId))
     }, [listingId])
 
-    // const openCarousel = () => {
-    //     setShowCarousel(true)
-    // }
+    const openCarousel = () => {
+        setShowCarousel(true)
+    }
+
+    const closeCarousel = () => {
+        setShowCarousel(false)
+    }
 
     return (
         <>
+      {showCarousel && (<Modal id="imgModal" onClose={() => setShowCarousel(false)}>
+        <button className="close" onClick={closeCarousel}>X</button>
+          <ImageCarousel listing={listing} />
+        </Modal>)}
+
+
         {listing && (
             <div id="title">
                 <h2>{listing.title}</h2>
@@ -33,7 +45,7 @@ export default function ListingShowPage() {
                     <span><u>{listing.reviewIds?.length} reviews</u></span>
                     <span id="location">{listing.city}, {listing.state}</span>
                 </h5>
-                <div className="showImages">
+                <div className="showImages" onClick={openCarousel}>
                     <img id="thumbnail" src={listing.photoUrl}></img>
                     <div id="miniPics">
                         <img src={listing.photo2Url}></img>
@@ -42,12 +54,12 @@ export default function ListingShowPage() {
                         <img id="four" src={listing.photo5Url}></img>
                     </div>
                 </div>
-                {/* <button id="showCarousel" onClick={openCarousel}>
+                <button id="showCarousel" onClick={openCarousel}>
                     <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
                     <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
                     <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
                     <span> Show all photos</span>
-                </button> */}
+                </button>
             </div>
         )}
         <div class="ShowPage">

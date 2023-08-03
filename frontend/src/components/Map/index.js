@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Wrapper } from '@googlemaps/react-wrapper';
 import './map.css'
 import { useHistory } from 'react-router-dom/';
-import { fontWeight } from '@mui/system';
 
 function Map({ listings, mapOptions }) {
   const mapRef = useRef(null);
@@ -13,16 +12,6 @@ function Map({ listings, mapOptions }) {
   const redirect = (listing) => {
     history.push(`/listings/${listing.id}`)
   }
-
-  // const contentString = (listing) => { 
-  //   return (
-  //     `<div id=${listing.id}>
-  //       <img id="modalImg" src=${listing.photoUrl}></img>
-  //       <h3> ${listing.city}, ${listing.country} </h3>
-  //       <div> $${listing.price} night </div> 
-  //       <div>`
-  //   ) 
-  // }
 
   useEffect(() => {
     if (mapRef.current === null) return;

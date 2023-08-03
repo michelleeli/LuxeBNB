@@ -1,3 +1,3 @@
 json.set! @reservation.id do
-    json.extract! @reservation, :id, :user_id, :start_date, :end_date, :guests, :total, :listing_id,
-end 
+    json.extract! @reservation, :id, :user_id, :start_date, :end_date, :guests, :total, :listing_id
+end

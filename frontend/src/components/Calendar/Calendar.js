@@ -141,7 +141,6 @@ export default function CalendarModal({listing}) {
 
   const reserved = () => {
     let dates = []
-    debugger
     Object.values(reservations).forEach (reservation => {
       let start = reservation.startDate;
       let d = new Date(start)

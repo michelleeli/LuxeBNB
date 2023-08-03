@@ -1,0 +1,25 @@
+
+.box {
+    max-width: 50%;
+    margin: auto;
+  }
+
+.carousel.carousel-slider .control-arrow {
+    width: 6vw;
+    color: white;
+    opacity: 1;
+  }
+
+.close {
+    font-size: 30px;
+    width: 5vw;
+    justify-content: flex-end;
+    margin-top: 0px;
+    margin-left: 90vw;
+    height: 5vw;
+    border-radius: 100px;
+}
+
+#imgModal {
+    width: 70vw;
+}

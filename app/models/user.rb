@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
     has_many :reviews,
         dependent: :destroy
-
+        
     has_secure_password
 
     before_validation :ensure_session_token

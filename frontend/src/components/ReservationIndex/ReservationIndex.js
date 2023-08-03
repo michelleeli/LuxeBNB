@@ -6,9 +6,13 @@ import Explore from "./Explore"
 
 
 export default function ReservationIndex({reservations}) {
-    const currentUser = useSelector((state) => state.session.user)
-    const upcomings = reservations?.filter((reservation) => (reservation.userId === currentUser?.id) && new Date(reservation.startDate) >= new Date())
-    const pasts = reservations?.filter((reservation) => (reservation.userId === currentUser?.id) && new Date(reservation.startDate) < new Date())
+
+    // const currentUser = useSelector((state) => state.session.user)
+    // const upcomings = reservations?.filter((reservation) => (reservation.userId === currentUser?.id) && new Date(reservation.startDate) >= new Date())
+    // const pasts = reservations?.filter((reservation) => (reservation.userId === currentUser?.id) && new Date(reservation.startDate) < new Date())
+    const upcomings = reservations.filter((reservation) => ( new Date(reservation.start_date) >= new Date()))
+    
+    const pasts = reservations.filter((reservation) => ( new Date(reservation.start_date) < new Date()))
     const history = useHistory()
 
     const browse = () => {

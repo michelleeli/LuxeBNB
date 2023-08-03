@@ -68,6 +68,11 @@ h5 > *{
     height: 51vh;
 }
 
+.showImages img:hover{
+    -webkit-filter: brightness(70%);
+    cursor: pointer;
+}
+
 img#two {
     border-top-right-radius: 15px;
     max-height: 28vh;

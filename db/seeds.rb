@@ -70,6 +70,52 @@ puts "Destroying tables..."
 
     listings = []
 
+
+
+    listing4 = Listing.create!(
+        title: "Waterline Square",
+        address: "400 West 61st Street",
+        description: "Spanning nearly five acres and built around a new 2.6-acre landscaped park, Waterline Square Luxury Rentals is the culmination of a thriving riverfront neighborhood 25 years in the making, where Midtown meets the Upper West Side.
+        Residents will have a life that transcends expectations with over 100,000 square feet of sports, leisure, and lifestyle amenities including an indoor tennis court, squash court, soccer field, half-pipe skate park, 25m lap pool, kid’s pool, gardening studio, recording studio, art studio, and dog playground. Waterline Square will be the home of Empellón Taqueria by James Beard-nominated chef Alex Stupak, as well as Harry’s Table by Cipriani, a new food hall and culinary experience.",
+        city: "New York",
+        state: "New York",
+        country: "United States",
+        lat: 40.77356849441648, 
+        lng: -73.99151041670282,
+        num_bedroom: 3,
+        num_bath: 2,
+        num_bed: 4,
+        max_guests: 5,
+        price: 1498,
+        host_id: randomUser(users),
+        self_checkin: true, 
+        wifi: true, 
+        air_condition: true, 
+        pets: true, 
+        tv: true, 
+        parking: false, 
+        washer: false, 
+        kitchen: true)
+
+        # listing4.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing4.png"), filename: "listing4")
+
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing4.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing4#{char}.png"), filename: "listing4#{char}")
+        end 
+
+        listing_tag33 = ListingTag.create!(listing_id: listing4.id, tag_id: city.id)
+        listing_tag34 = ListingTag.create!(listing_id: listing4.id, tag_id: apartment.id)
+        listing_tag35 = ListingTag.create!(listing_id: listing4.id, tag_id: pool.id)
+
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4a.png"), filename: "listing4a")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4b.png"), filename: "listing4b")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4c.png"), filename: "listing4c")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4d.png"), filename: "listing4d")
+        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4e.png"), filename: "listing4e")
+
+        
+        listings << listing4
+
     listing8 = Listing.create!(
         title: "Pearl West",
         address: "245 Longbay Beach Drive",
@@ -453,52 +499,6 @@ puts "Destroying tables..."
         # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3d.png"), filename: "listing3d")
         # listing3.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing3e.png"), filename: "listing3e")
 
-
-
-    listing4 = Listing.create!(
-        title: "Waterline Square",
-        address: "400 West 61st Street",
-        description: "Spanning nearly five acres and built around a new 2.6-acre landscaped park, Waterline Square Luxury Rentals is the culmination of a thriving riverfront neighborhood 25 years in the making, where Midtown meets the Upper West Side.
-        Residents will have a life that transcends expectations with over 100,000 square feet of sports, leisure, and lifestyle amenities including an indoor tennis court, squash court, soccer field, half-pipe skate park, 25m lap pool, kid’s pool, gardening studio, recording studio, art studio, and dog playground. Waterline Square will be the home of Empellón Taqueria by James Beard-nominated chef Alex Stupak, as well as Harry’s Table by Cipriani, a new food hall and culinary experience.",
-        city: "New York",
-        state: "New York",
-        country: "United States",
-        lat: 40.77356849441648, 
-        lng: -73.99151041670282,
-        num_bedroom: 3,
-        num_bath: 2,
-        num_bed: 4,
-        max_guests: 5,
-        price: 1498,
-        host_id: randomUser(users),
-        self_checkin: false, 
-        wifi: true, 
-        air_condition: true, 
-        pets: true, 
-        tv: true, 
-        parking: false, 
-        washer: false, 
-        kitchen: true)
-
-        # listing4.images.attach(io: File.open("/Users/michelleli/Desktop/LuxeBNB/app/assets/listing4.png"), filename: "listing4")
-
-        ["a", "b", "c", "d", "e"].each do |char|
-            listing4.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing4#{char}.png"), filename: "listing4#{char}")
-        end 
-
-        listing_tag33 = ListingTag.create!(listing_id: listing4.id, tag_id: city.id)
-        listing_tag34 = ListingTag.create!(listing_id: listing4.id, tag_id: apartment.id)
-        listing_tag35 = ListingTag.create!(listing_id: listing4.id, tag_id: pool.id)
-
-        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4a.png"), filename: "listing4a")
-        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4b.png"), filename: "listing4b")
-        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4c.png"), filename: "listing4c")
-        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4d.png"), filename: "listing4d")
-        # listing4.images.attach(io: URI.open("https://luxebnb-seed.s3.us-east-2.amazonaws.com/listing4e.png"), filename: "listing4e")
-
-        
-        listings << listing4
-
     listing5 = Listing.create!(
         title: "Hudson Yards Luxury Complex",
         address: "530 West 30th Street",
@@ -514,7 +514,7 @@ puts "Destroying tables..."
         max_guests: 6,
         price: 1200,
         host_id: randomUser(users),
-        self_checkin: false, 
+        self_checkin: true, 
         wifi: true, 
         air_condition: true, 
         pets: true, 
@@ -642,8 +642,8 @@ listing14 = Listing.create!(
         title: "5 Elements Villa",
         address: "Ko Pha-ngan District, Surat Thani 84280",
         description: "A symphony of waves, eagles, and rustling palms greet you at this brand-new villa. Located in Tong Lang, the property is surrounded by dense jungle foliage. The infinity pool mimics the Gulf of Thailand as it melts into the horizon. You’ll discover a vibrant snorkeling spot just steps from the backyard. Catch a flick in the in-house cinema or treat yourself to a massage and ice bath at the spa.",
-        city: "Tambon Ko Pha-ngan",
-        state: "Thailand",
+        city: "Tambon",
+        state: "Ko Pha-ngan",
         country: "Thailand",
         lat: 9.79488823155702, 
         lng: 99.97938658520017,

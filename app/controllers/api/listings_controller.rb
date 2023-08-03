@@ -1,5 +1,4 @@
 class Api::ListingsController < ApplicationController
-
     def index
         @listings = Listing.all
         render 'api/listings/index'
@@ -14,8 +13,6 @@ class Api::ListingsController < ApplicationController
         end 
     end 
     
-    # def update 
-    # end 
 
     def create
         @listing = Listing.new(listing_params)
@@ -24,7 +21,6 @@ class Api::ListingsController < ApplicationController
     def listing_params
         params.require(:listing).permit(:title, :description, :address, :city, :state, :num_bedroom, :num_bath, :num_bed, :max_guests, :price)
     end 
-
 
 end
 
