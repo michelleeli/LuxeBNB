@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import likeReducer from "./likes.js";
 import {listingReducer} from './listings.js';
 import {reservationReducer} from "./reservations";
 import reviewReducer from "./reviews.js";
@@ -8,5 +9,6 @@ export const entitiesReducer = combineReducers({
     listings: listingReducer,
     reservations: reservationReducer,
     reviews: reviewReducer,
-    search: searchReducer
+    search: searchReducer,
+    likes: likeReducer
 })

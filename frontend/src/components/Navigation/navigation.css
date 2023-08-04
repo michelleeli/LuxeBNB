@@ -48,12 +48,35 @@
     transform: translateX(-115px);
     padding: 0px;
     background-color: white;
+    z-index: 4;
+}
+
+.logged-in-dropdown{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 25vh;
+    width: 201px;
+    box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
+    border-radius: 20px;
+    transform: translateX(-115px);
+    padding: 0px;
+    background-color: white;
+    z-index: 4;
+}
+
+.logged-in-dropdown > * {
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .profile-dropdown > * {
     padding-right: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
+    font-weight: 500;
 }
 
 #pfpIcon {
@@ -97,8 +120,9 @@ button:hover {
     margin-top: 30px;
 }
 
-#trips {
+#logged-in-buttons {
     margin-top: 2vh;
+    font-weight: 500;
 }
 
 #searchButton {

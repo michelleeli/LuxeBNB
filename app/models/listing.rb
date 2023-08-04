@@ -52,5 +52,12 @@ class Listing < ApplicationRecord
         through: :listing_tags,
         source: :tag
     
+    has_many :likes,
+        dependent: :destroy
+
+    has_many :likers,
+        through: :likes,
+        source: :user 
+    
     has_many_attached :images
 end

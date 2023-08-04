@@ -30,6 +30,11 @@ function ProfileButton() {
     history.push(`/reservations`)
   }
 
+  const redirectWish = (e) => {
+    e.stopPropagation()
+    history.push(`/wishlist`)
+  }
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -54,9 +59,10 @@ function ProfileButton() {
         </ul>
       )} 
       {showMenu && currentUser && (
-        <ul className="profile-dropdown">
-          <button id="trips" onClick={redirectRes}>My Trips</button>
-          <button onClick={()=> dispatch(logout())}>Log Out</button>
+        <ul className="logged-in-dropdown">
+          <button id="logged-in-buttons" onClick={redirectRes}>My Trips</button>
+          <button id="logged-in-buttons" onClick={redirectWish}>My Wishlist</button>
+          <button id="logged-in-buttons" onClick={()=> dispatch(logout())}>Log Out</button>
         </ul>
       )}
       

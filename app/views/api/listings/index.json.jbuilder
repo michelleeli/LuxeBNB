@@ -1,7 +1,7 @@
 @listings.each do |listing|
     json.set! listing.id do 
         json.extract! listing, :id, :title, :address, :city, :state, :price, :num_bed, :num_bath, :num_bedroom, :host_id, :max_guests, :description, :country, :lat, :lng,
-        :self_checkin, :wifi, :air_condition, :pets, :tv, :parking, :washer, :kitchen
+        :self_checkin, :wifi, :air_condition, :pets, :tv, :parking, :washer, :kitchen, :likes
         json.host listing.host.first_name
         json.avg_rating listing.reviews.average(:rating)
         # json.avg_clean listing.reviews.average(:cleanliness)
@@ -18,6 +18,7 @@
         # json.photo4Url listing.images.attached? ? listing.images[3].url : nil
         # json.photo5Url listing.images.attached? ? listing.images[4].url : nil
         json.tags listing.tags.pluck(:name)
+        # json.liked Like.where(user_id: current_user.id, listing_id: listing.id)[0]
     end 
 end 
 

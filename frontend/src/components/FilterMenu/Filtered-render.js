@@ -18,6 +18,7 @@ export default function FilteredRender() {
     
     return (
         <>
+        <FilterMenu/>
         <ListingIndex listings={selected}/>
         </>
     )

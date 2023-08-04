@@ -4,7 +4,7 @@ import './calendar.css'
 import { DateRange } from 'react-date-range';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createReservation, fetchReservations } from '../../store/reservations';
+import { createReservation } from '../../store/reservations';
 import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
 import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';

@@ -1,0 +1,26 @@
+#heart {
+    color: pink;
+    cursor: pointer;
+    padding-top: 0.8vw;
+    padding-bottom: 0.8vw;
+    padding-left: 0.9vw;
+    padding-right: 0.9vw;
+    position: absolute;
+}
+
+#empty {
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 100px;
+    padding-top: 0.8vw;
+    padding-bottom: 0.8vw;
+    padding-left: 0.9vw;
+    padding-right: 0.9vw;
+}
+
+#wishlist {
+    margin-left: 6vw;
+    margin-top: 7vh;
+    padding-bottom: 3vh;
+}

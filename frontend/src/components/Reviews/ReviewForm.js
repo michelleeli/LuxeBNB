@@ -180,7 +180,7 @@ export default function ReviewForm({reservation}) {
     const submitReview = (e) => {
         e.preventDefault()
         if (reviewType === "Create") {
-            if (!dispatch(createReview({body: body, 
+            dispatch(createReview({body: body, 
                 cleanliness: cleanliness, 
                 communication:communication, 
                 check_in: checkin, 
@@ -189,8 +189,7 @@ export default function ReviewForm({reservation}) {
                 value:value, 
                 rating: rating, 
                 user_id:currentUser.id, 
-                listing_id:reservation.listing_id})))
-                console.log("required")
+                listing_id:reservation.listingId}))
             }
         else {
             dispatch(updateReview({body: body, 
@@ -202,7 +201,7 @@ export default function ReviewForm({reservation}) {
                 value:value, 
                 rating: rating, 
                 user_id:currentUser.id, 
-                listing_id:reservation.listing_id}))
+                listing_id:reservation.listingId}))
         }        
         document.elementFromPoint(10, 10).click();
     }
