@@ -12,6 +12,39 @@ Luxebnb is a clone of Airbnb, an online marketplace for short and long-term home
 ### User Authentication
 Users are able to create new accounts or login with existing accounts. Account creation is secured with password encryption. Frontend and backend error handling is used to validate user credentials. A demo user login is available to access the site as a logged in user without creating a new account.
 
+```
+return (
+    <form className="loginForm" onSubmit={handleSubmit} onClick={stopProp}>
+      <h4>Log In</h4>
+      <hr/>
+      <h3>Welcome to Luxebnb</h3>
+      <div id="errors">
+        {errors && <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>}
+        <span className="errors">      {errors}</span>
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      <br/>
+        <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+      <button className="submit" type="submit">Continue</button>
+      <br/>
+      <button className="submit" onClick={demoLogin}>Demo Login</button>
+    </form>
+```
+
 ### Listings 
 The landing page displays all available listings with a caption of location, price, and rating. Users can filter the listings with the filter menu by types. The toggle button on the landing page to "Show Map" and "Show List" changes the view from a grid of all listings to a map of all listings and vice versa. 
 
@@ -31,3 +64,34 @@ Logged in users are able to access their reservations under "My Trips". Upcoming
 
 ### Wishlist
 Logged in users are also able to "like" and "unlike" listings. Liked listings will show under "Wishlist" and users can unlike to remove them. 
+
+```
+    return(
+        <>
+        {future && (<button id="cancel" onClick={deleteRes}>Cancel reservation</button>)}
+        {!future && (<button id="cancel" onClick={openReviewForm}>{reviewType === "Create" ? "Write a review" : "Update review" }</button>)}
+        {!future && reviewType === "Update" && <button id="cancel" onClick={deleteRev}>Delete Review</button>}
+        {openReview && (
+            <Modal onClose={() => setOpenReview(false)}>
+                <ReviewForm reservation={reservation}/>
+            </Modal>
+        )}
+        
+        {reservation && listing && (
+            <>
+        <div className="upcomingDiv" onClick={showListing}>
+            <div className="upcomingDescription">
+                <h2 id="city">{listing.city}</h2>
+                <span id="hostedBy">Hosted by {listing.host}</span>
+                <hr id="upcomingHr"/>
+                <div className="dateAddress">
+                    <p id="startDate">{reservation.startDate}</p>
+                    <p id="address">{listing.address} {listing.city}, {listing.state}</p>
+                </div>
+            </div>
+            <img className="reservationImg" src={listing.photoUrl}></img>
+       
+        </div>
+        </>
+        )}
+```
