@@ -16,7 +16,7 @@ function Navigation() {
     <>
       <div className='nav' >
         <div id="logo" onClick={redirectHome}>
-          <img id="logoimage" src={require("../../assets/ABNB.png")} />
+          <img id="logoimage" src={require("../../../../app/assets/ABNB.png")} />
           <p id="logoname">luxebnb</p>
         </div>
         <SearchBar />
