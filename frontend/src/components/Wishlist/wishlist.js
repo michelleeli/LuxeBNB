@@ -3,11 +3,19 @@ import ListingIndex from "../ListingIndex/ListingIndex";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchListings } from "../../store/listings";
 import { fetchLikes } from "../../store/likes";
+import { useHistory } from "react-router-dom";
+
 
 export default function Wishlist() {
     const dispatch = useDispatch()
     const listings = useSelector(state => Object.values(state.entities.listings))
     const likes = useSelector(state => Object.values(state.entities.likes))
+    const currentUser = useSelector((state) => state.session.user)
+    const history = useHistory()
+    
+    if (!currentUser) {
+        history.push('/')
+    }
 
     const likedIds = []
     likes.forEach(like => {

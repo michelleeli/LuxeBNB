@@ -5,19 +5,20 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import Explore from "./Explore"
 import { useEffect } from "react"
 import { fetchReservations } from "../../store/reservations"
-import { fetchListings } from "../../store/listings"
 
-export default function ReservationIndex() {
+export default function ReservationIndex({reservations}) {
   
     const dispatch = useDispatch()
-    const reservations = useSelector((state)=> Object.values(state.entities.reservations))
-    const reservationIds = useSelector(state => Object.values(state.session.user.reservationIds))
-    const reserved = reservations.filter(reservation => reservationIds.includes(reservation.id))
-    const upcomings = reserved.filter(reservation => (new Date(reservation.startDate) >= new Date()))
-    const pasts = reserved.filter((reservation) => ( new Date(reservation.startDate) < new Date()))
-    const listings = useSelector(state => state.entities.listings)
+
+    const upcomings = reservations.filter(reservation => (new Date(reservation.startDate) >= new Date()))
+    const pasts = reservations.filter((reservation) => ( new Date(reservation.startDate) < new Date()))
+    const currentUser = useSelector(state => state.session.user)
 
     const history = useHistory()
+
+    if (!currentUser) {
+        history.push('/')
+    }
 
     const browse = () => {
         history.push('/')
@@ -25,7 +26,6 @@ export default function ReservationIndex() {
 
     useEffect(()=> {
         dispatch(fetchReservations())
-        dispatch(fetchListings())
     }, [])
 
     return (

@@ -18,7 +18,7 @@ export default function ReviewForm({reservation}) {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user)
     const [reviewType, setReviewType] = useState("Create")
-    const review = useSelector(getReview(reservation.listing_id, currentUser.id))
+    const review = useSelector(getReview(reservation.listingId, currentUser.id))
 
     useEffect(()=> {
         dispatch(fetchReviews())

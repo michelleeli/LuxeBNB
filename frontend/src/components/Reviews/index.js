@@ -4,17 +4,23 @@ import ReviewIndex from "./ReviewIndex";
 import './reviews.css'
 
 export default function ReviewIndexPage({listingId}) {
-    const reviewIds = useSelector((state)=> state.entities.listings[listingId].reviewIds)
-    const allReviews = useSelector(state => state.entities.reviews)
-    const reviews = reviewIds?.map(id=> allReviews[id])
+    // const reviewIds = useSelector((state)=> state.entities.listings[listingId].reviewIds)
+    const allReviews = useSelector(state => Object.values(state.entities.reviews))
+    const reviews = allReviews.filter(review => review.listingId === listingId)
+    // const reviews = reviewIds?.map(id=> allReviews[id])
     const [factorShow, setFactorShow] = useState(false)
     const listing = useSelector((state) => state.entities.listings[listingId])
-
+    // const dispatch = useDispatch()
+    
     useEffect(()=> {
-        if (reviews?.length >= 3) {
+        if (reviews.length >= 3) {
             setFactorShow(true)
         }
-    }, [reviews])
+    }, [])
+
+    // useEffect(()=> {
+    //     dispatch(fetchReviews())
+    // }, [listingId])
 
     return (
         <div className="review">

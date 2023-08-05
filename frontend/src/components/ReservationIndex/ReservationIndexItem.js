@@ -10,11 +10,9 @@ import { useHistory } from "react-router-dom";
 export const ReservationIndexItem = ({reservation}) => {
     const dispatch = useDispatch()
     const listing = useSelector((state) => state.entities.listings[reservation.listingId])
-    console.log(listing)
-
     const future = (new Date(reservation.startDate) > new Date ())
     const [openReview, setOpenReview] = useState(false)
-    const currentUserId = useSelector(state => state.session.user).id
+    const currentUserId = useSelector(state => state.session.user)?.id
     const [reviewType, setReviewType] = useState("Create")
     const review = useSelector(getReview(reservation.listingId, currentUserId))
     const history = useHistory()
@@ -28,7 +26,7 @@ export const ReservationIndexItem = ({reservation}) => {
 
     useEffect(()=>{
         dispatch(fetchListing(reservation.listingId))
-    }, [reservation.listingId])
+    }, [reservation.listing_id])
 
     const deleteRes = () => {
         if (reservation) {
