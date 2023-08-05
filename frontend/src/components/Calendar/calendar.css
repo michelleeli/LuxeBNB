@@ -170,6 +170,7 @@
 
 #saved h3 {
     text-align: center;
+    justify-content: center;
 }
 
 #confirmClose {
@@ -180,4 +181,20 @@
 
 #confirmClose:hover {
     background-color: white;
+}
+
+.rdrMonthName {
+    color: black;
+}
+
+.rdrNextPrevButton {
+    background: white;
+}
+
+.rdrInRange, .rdrStartEdge, .rdrEndEdge {
+    background-color: rgb(199,45,101);
+}
+
+.rdrToday {
+    color: rgb(212, 56, 81)
 }

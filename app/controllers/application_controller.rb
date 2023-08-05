@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
     before_action :snake_case_params, :attach_authenticity_token
-
+    helper_method :current_user
+    
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
     end

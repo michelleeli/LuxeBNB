@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_150803) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_182217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_150803) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id", "user_id"], name: "index_likes_on_listing_id_and_user_id", unique: true
+    t.index ["listing_id"], name: "index_likes_on_listing_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "listing_tags", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id", "tag_id"], name: "index_listing_tags_on_listing_id_and_tag_id", unique: true
+    t.index ["listing_id"], name: "index_listing_tags_on_listing_id"
+    t.index ["tag_id"], name: "index_listing_tags_on_tag_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -64,6 +84,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_150803) do
     t.bigint "host_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
+    t.float "lng"
+    t.float "lat"
     t.index ["host_id"], name: "index_listings_on_host_id"
   end
 
@@ -78,6 +101,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_150803) do
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_reservations_on_listing_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "cleanliness", null: false
+    t.integer "communication", null: false
+    t.integer "check_in", null: false
+    t.integer "accuracy", null: false
+    t.integer "location", null: false
+    t.integer "value", null: false
+    t.float "rating", null: false
+    t.string "body", null: false
+    t.bigint "listing_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_reviews_on_listing_id"
+    t.index ["user_id", "listing_id"], name: "index_reviews_on_user_id_and_listing_id", unique: true
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,4 +144,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_150803) do
   add_foreign_key "listings", "users", column: "host_id"
   add_foreign_key "reservations", "listings"
   add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "listings"
+  add_foreign_key "reviews", "users"
 end

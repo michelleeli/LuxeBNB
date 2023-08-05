@@ -48,12 +48,35 @@
     transform: translateX(-115px);
     padding: 0px;
     background-color: white;
+    z-index: 4;
+}
+
+.logged-in-dropdown{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 25vh;
+    width: 201px;
+    box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
+    border-radius: 20px;
+    transform: translateX(-115px);
+    padding: 0px;
+    background-color: white;
+    z-index: 4;
+}
+
+.logged-in-dropdown > * {
+    padding-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .profile-dropdown > * {
     padding-right: 10px;
     padding-top: 15px;
     padding-bottom: 15px;
+    font-weight: 500;
 }
 
 #pfpIcon {
@@ -83,15 +106,6 @@ button:hover {
     margin-left: 10px;
 }
 
-#search {
-    margin-top: 5px;
-    border: 1px solid lightgrey;
-    width: 300px;
-    height: 40px;
-    border-radius: 50px;
-    box-shadow: 1px 1px 5px rgba(138, 138, 138, 0.3);
-}
-
 #search:hover {
     box-shadow: 2px 2px 5px rgba(138, 138, 138, 0.4);
 }
@@ -104,4 +118,73 @@ button:hover {
     background-color:#e7e6e6;
     height: 1px;
     margin-top: 30px;
+}
+
+#logged-in-buttons {
+    margin-top: 2vh;
+    font-weight: 500;
+}
+
+#searchButton {
+    cursor: pointer;
+    padding: 1vw;
+    border-radius: 100px;
+    background-color: rgb(236 76 96);
+    padding-left: 0.65vw;
+    padding-right: 0.65vw;
+}
+
+#search-dropdown {
+    position: absolute;
+}
+
+.searchbar-container {
+    display: flex;
+    padding: 5px;
+    border: 1px solid lightgrey;
+    width: 25vw;
+    height: 4vh;
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px rgba(138, 138, 138, 0.3);
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+#search-input, #search-input:focus {
+    border: 0;
+    outline: none;
+    height: 30px;
+    margin-left: 2px;
+}
+
+#search-dropdown {
+    position: absolute;
+    top:45px;
+    width: 98%;
+    background-color: white;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 1px 5px rgba(138, 138, 138, 0.3);
+    border-radius: 15px;
+    padding-left: 0px;
+    z-index: 4;
+}
+
+.search-dropdown-item {
+    cursor: pointer;
+    padding: 1vw;
+    list-style-type: none;
+}
+
+.search-dropdown-item:hover {
+    background-color: rgb(247, 247, 247);
+}
+
+#locationSearch {
+    background-color: rgb(235, 232, 232);
+    padding: 1vw;
+    padding-left: 1.2vw;
+    padding-right: 1.2vw;
+    border-radius: 20px;
+    margin-right: 2vw;
 }

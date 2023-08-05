@@ -1,0 +1,53 @@
+.reviewForm input[type="radio"] {
+    width: 1.5vw;
+}
+
+.reviewForm > * {
+    padding: 1vh;
+}
+
+.reviewForm {
+    height: 80vh;
+    width: 40vw;
+    overflow-y: auto;
+}
+
+.reviewForm label {
+    font-size: 23px;
+    padding: 0.5vw;
+    transition: all 0.2 ease;
+    color: rgb(255, 191, 0)
+}
+
+.reviewForm label:hover ~label {
+    color: grey
+}
+
+.reviewForm input[type="radio"]:checked+label ~label{
+    color: grey
+}
+
+
+#rating h4 {
+    font-size: 20px;
+}
+
+#three {
+    padding-bottom: 5vh;
+}
+
+#body {
+    font-size: 15px;
+    height: 13vh;
+    overflow-y: scroll;
+    width: 28vw;
+    padding: 1vw;
+}
+
+#reviewer {
+    font-weight: 700;
+}
+
+.reviewForm input[type="radio"] {
+    display: none;
+}

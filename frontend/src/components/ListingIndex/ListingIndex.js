@@ -1,3 +1,4 @@
+import FilterMenu from "../FilterMenu/index.js"
 import { ListingIndexItem } from "./ListingIndexItem"
 
 export default function ListingIndex({listings}) {

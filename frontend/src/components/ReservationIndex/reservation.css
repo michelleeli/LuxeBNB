@@ -10,6 +10,7 @@
 .reservationImg {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    width: 45%
 }
 
 
@@ -20,7 +21,7 @@
     border: 1px solid rgb(234, 233, 233);
     border-radius: 15px;
     padding-left: 25px;
-    width: 780px;
+    width: 56vw;
     height: 190px;
     box-shadow: 0px 0px 15px rgba(160, 159, 159, 0.3);
 }
@@ -53,13 +54,15 @@
     padding: 1vw;
     width: 15vw;
     margin-top: 5vh;
+    border: 1px dotted grey;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom: none;
 }
 
 #cancel:hover {
     background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
     color: white;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
 }
 
 #been {
@@ -71,3 +74,65 @@
     margin-left: 0.5vw;
     padding-bottom: 1vh;
 }
+
+#explore {
+    height: 30vh;
+    width: 25vw;
+    margin-left: 63vw;
+    position: fixed;
+    margin-top: 10vh;
+}
+
+.explore{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 4vh;
+}
+
+#exploreimg{
+    width: 80%;
+    height: 50%;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+#exploreCaption {
+    font-size: 12px;
+}
+
+#exploreTitle {
+    font-weight: 500;
+}
+
+#exploreItems > button{
+    background: rgb(175, 174, 174);
+    width: 10vw;
+    margin-left: 7vw;
+}
+
+#exploreItems > button:hover{
+    background: rgb(199,45,101);
+}
+
+.upcomingDiv {
+    cursor: pointer;
+}
+
+#address {
+    margin-left: 1vw;
+}
+
+#noTrips {
+    width: 56vw;
+}
+
+#browse {
+    width: 12vw;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 15px;
+    border: 1px solid rgb(36, 36, 36);
+    padding: 1vw;
+    margin-top: 4vh;
+}
+

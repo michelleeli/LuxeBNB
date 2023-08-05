@@ -24,11 +24,15 @@ class User < ApplicationRecord
         class_name: :Listing,
         dependent: :destroy
     
-    has_many :reservations
+    has_many :reservations,
+        dependent: :destroy
 
-    has_one_attached :pfp
+    has_many :reviews,
+        dependent: :destroy
 
-
+    has_many :likes,
+        dependent: :destroy
+        
     has_secure_password
 
     before_validation :ensure_session_token

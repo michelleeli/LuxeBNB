@@ -6,7 +6,6 @@ import './navigation.css'
 import SignupModal from "../SignupModal";
 import { clearErrors, setLoginErrors } from "../../store/errors";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -25,19 +24,15 @@ function ProfileButton() {
     dispatch(setLoginErrors([]))
     dispatch(clearErrors())
   };
-  
-  // const toggleMenu = (e) => {
-  //   e.stopPropagation()
-  //   if (showMenu === false) {
-  //     return openMenu
-  //   } else {
-  //     return closeMenu
-  //   }
-  // }
 
   const redirectRes = (e) => {
     e.stopPropagation()
     history.push(`/reservations`)
+  }
+
+  const redirectWish = (e) => {
+    e.stopPropagation()
+    history.push(`/wishlist`)
   }
 
   useEffect(() => {
@@ -64,9 +59,10 @@ function ProfileButton() {
         </ul>
       )} 
       {showMenu && currentUser && (
-        <ul className="profile-dropdown">
-          <button onClick={redirectRes}>My Trips</button>
-          <button onClick={()=> dispatch(logout())}>Log Out</button>
+        <ul className="logged-in-dropdown">
+          <button id="logged-in-buttons" onClick={redirectRes}>My Trips</button>
+          <button id="logged-in-buttons" onClick={redirectWish}>My Wishlist</button>
+          <button id="logged-in-buttons" onClick={()=> dispatch(logout())}>Log Out</button>
         </ul>
       )}
       

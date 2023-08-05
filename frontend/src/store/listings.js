@@ -25,9 +25,7 @@ export const fetchListings = () => async dispatch => {
     if (res.ok) {
         const data = await res.json()
         dispatch(addListings(data))
-    } else {
-        console.log('no')
-    }
+    } 
 }
 
 export const fetchListing = (listingId) => async dispatch => {
@@ -61,7 +59,7 @@ export const listingReducer = (state = {}, action) => {
             newState = {...state, ...action.listings}
             return newState
         case ADD_LISTING: 
-            newState = {...state, ...action.listing}
+            newState = {...state, ...action.listing.listing}
             return newState
         case REMOVE_LISTING:
             delete(newState[action.listingId])

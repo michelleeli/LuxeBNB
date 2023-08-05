@@ -1,36 +1,74 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchListing } from "../../store/listings"
 import './ListingShow.css'
 import Calendar from "../Calendar"
+import ReviewIndexPage from "../Reviews"
+import MapWrapper from "../Map"
+import Avatar, { genConfig } from 'react-nice-avatar'
+import ImageCarousel from "../Carousel.js/carousel"
+import { Modal } from '../../context/Modal';
 
 export default function ListingShowPage() {
     const dispatch = useDispatch()
     const listingId = useParams().listingId
     const listing = useSelector((state) => state.entities.listings[listingId])
-    
+    const [showCarousel, setShowCarousel] = useState(false)
+    const config = genConfig() 
+
     useEffect(() => {
         dispatch(fetchListing(listingId))
     }, [listingId])
 
+    const openCarousel = () => {
+        setShowCarousel(true)
+    }
+
+    const closeCarousel = () => {
+        setShowCarousel(false)
+    }
+
     return (
         <>
+      {showCarousel && (<Modal id="imgModal" onClose={() => setShowCarousel(false)}>
+        <button className="close" onClick={closeCarousel}>X</button>
+          <ImageCarousel listing={listing} />
+        </Modal>)}
+
+
         {listing && (
             <div id="title">
                 <h2>{listing.title}</h2>
-                <div>
-                    <p id="location">{listing.city}, {listing.state}</p>
+                <h5>
+                    <span> ★ {listing.avgRating?.toFixed(2)}</span>
+                    <span><u>{listing.reviewIds?.length} reviews</u></span>
+                    <span id="location">{listing.city}, {listing.state}</span>
+                </h5>
+                <div className="showImages" onClick={openCarousel}>
+                    <img id="thumbnail" src={listing.photoUrl}></img>
+                    <div id="miniPics">
+                        <img src={listing.photo2Url}></img>
+                        <img id="two" src={listing.photo3Url}></img>
+                        <img src={listing.photo4Url}></img>
+                        <img id="four" src={listing.photo5Url}></img>
+                    </div>
                 </div>
-                <img src="https://wallpapers.com/images/high/aesthetic-glass-mansion-lgs04s3xlfg1iwat.webp"></img>
-
+                <button id="showCarousel" onClick={openCarousel}>
+                    <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
+                    <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
+                    <i class="fa-solid fa-ellipsis-vertical" style={{color: "#434242",}}></i>
+                    <span> Show all photos</span>
+                </button>
             </div>
         )}
         <div class="ShowPage">
         {listing &&  (
         <div className="ListingShow">
-
-            <p>Hosted by {listing.host}</p>
+            <div id="host" >
+                <p>Hosted by {listing.host}</p>
+                <Avatar id="hostpfp" style={{ width: '3rem', height: '3rem' }} {...config} />
+            </div>
             <div className="numRooms">
                 <span>{listing.maxGuests} guests</span>
                 <span> • </span>
@@ -76,8 +114,15 @@ export default function ListingShowPage() {
         )}
         <Calendar listing={listing}/>
         </div>
+        {listing && <ReviewIndexPage listingId={listing.id}/>}
+        <div id="showPageMap">
+            <hr/>
+            <h3>Where you'll be </h3>
+            <MapWrapper listings={[listing]} />
+        </div>
+
         </>
     )
 }
  
-// selfchcekin
+

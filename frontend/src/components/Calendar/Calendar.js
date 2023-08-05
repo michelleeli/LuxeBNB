@@ -23,6 +23,8 @@ export default function CalendarModal({listing}) {
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState(false)
 
+  const reservations = useSelector((state) => state.entities.reservations)
+
   useEffect(()=> {
     setLoggedOut(!currentUser)
   }, [currentUser])
@@ -118,37 +120,40 @@ export default function CalendarModal({listing}) {
     e.preventDefault()
     if (loggedOut) {
       setClickRes(true)
+      return;
     } 
     if (dates[0].startDate >= dates[0].endDate) {
       setError(true) 
       return;
     } 
     else {
-      if (dispatch(createReservation({listing_id: listing.id, user_id: currentUser.id, start_date: dates[0].startDate, end_date: dates[0].endDate, guests, total: (listing.price * numDays())}))) {
+      if (dispatch(createReservation({listing_id: listing.id, user_id: currentUser?.id, start_date: dates[0].startDate, end_date: dates[0].endDate, guests, total: (listing?.price * numDays())}))) {
         setSaved(true)
       }
     }
   }
 
   const totalFormat = () => {
-    let total = (listing.price * numDays())
+    let total = (listing?.price * numDays())
     total = total.toLocaleString("en-US");
     return total
   }
 
   const reserved = () => {
     let dates = []
-    listing?.reservations?.forEach (reservation => {
-      let start = reservation.start_date;
+    Object.values(reservations).forEach (reservation => {
+      let start = reservation.startDate;
       let d = new Date(start)
       let date = start
-      while (date <= reservation.end_date) {
+      while (date <= reservation.endDate) {
         dates.push(parseISO(date))
         d.setUTCDate(d.getUTCDate() + 1)
         date = (d.toISOString().substr(0,10))
       }
     })
+
     return dates;
+
   }
 
   return (
@@ -253,7 +258,3 @@ export default function CalendarModal({listing}) {
     )
       
 }
-
-
-
-// [parseISO("2023-07-29")]

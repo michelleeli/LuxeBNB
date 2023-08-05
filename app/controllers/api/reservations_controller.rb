@@ -10,7 +10,7 @@ class Api::ReservationsController < ApplicationController
     end 
 
     def index 
-        @reservations = Reservation.all
+        @reservations = Reservation.where(user_id: current_user.id)
         render 'api/reservations/index'
     end 
 
