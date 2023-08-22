@@ -188,3 +188,13 @@ button:hover {
     border-radius: 20px;
     margin-right: 2vw;
 }
+
+.menu-buttons {
+    display: flex;
+}
+
+.links > a > i{
+    margin-right: 1vw;
+    margin-top: 3.5vh;
+    cursor: pointer;
+}

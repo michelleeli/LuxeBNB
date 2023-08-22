@@ -56,10 +56,16 @@ function ProfileButton() {
 
   return (
     <>
-      <button id="pfp" onClick={openMenu}>
-        <i id="burger" className="fa-solid fa-bars" style={{color: "#717171",}}/>
-        <i id="pfpIcon" className="fa-regular fa-circle-user fa-2xl" style={{color: "#717171",}}/>
-      </button>
+      <div className="menu-buttons">
+        <div className="links">
+          <a href="https://github.com/michelleeli" target="_blank"><i class="fa-brands fa-github fa-2xl"  style={{color: "#ec4c5f",}}></i></a>
+          <a href="https://www.linkedin.com/in/michelle-li-040922288/" target="_blank"><i class="fa-brands fa-linkedin fa-2xl" style={{color: "#ec4c5f",}} ></i></a>
+        </div>
+        <button id="pfp" onClick={openMenu}>
+          <i id="burger" className="fa-solid fa-bars" style={{color: "#717171",}}/>
+          <i id="pfpIcon" className="fa-regular fa-circle-user fa-2xl" style={{color: "#717171",}}/>
+        </button>
+      </div>
       {showMenu && !currentUser && (
         <ul className="profile-dropdown">
            <>
