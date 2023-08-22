@@ -16,6 +16,11 @@ export default function ListingShowPage() {
     const listing = useSelector((state) => state.entities.listings[listingId])
     const [showCarousel, setShowCarousel] = useState(false)
     const config = genConfig() 
+    const [userAvatar, setUserAvatar] = useState()
+
+    useEffect(()=> {
+         setUserAvatar(<Avatar id="hostpfp" style={{ width: '3rem', height: '3rem' }} {...config} />)
+    }, [])
 
     useEffect(() => {
         dispatch(fetchListing(listingId))
@@ -67,7 +72,7 @@ export default function ListingShowPage() {
         <div className="ListingShow">
             <div id="host" >
                 <p>Hosted by {listing.host}</p>
-                <Avatar id="hostpfp" style={{ width: '3rem', height: '3rem' }} {...config} />
+                {userAvatar}
             </div>
             <div className="numRooms">
                 <span>{listing.maxGuests} guests</span>

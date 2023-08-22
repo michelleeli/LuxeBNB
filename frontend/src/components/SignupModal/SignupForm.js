@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { clearErrors, setSignupErrors } from "../../store/errors";
+import { clearErrors } from "../../store/errors";
 import { signup } from "../../store/session";
-import LoginFormModal from "../LoginForm";
 import './SignupModal.css'
 
-function SignupFormPage() {
+function SignupFormPage({closeModal}) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const backErrors = useSelector(state => state.errors.signup)
+  const emailErrors = backErrors?.filter(error => error.includes("Email"))
+  const passwordErrors = backErrors?.filter(error => error.includes("Password"))
+  const currentUser = useSelector(state => state.session.user)
 
   useEffect(()=> {
   }, [errors])
 
-  // if (sessionUser) return <Redirect to="/" />;
+  useEffect(()=> {
+    if (currentUser) {
+      closeModal()
+    }
+  }, [currentUser])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +37,7 @@ function SignupFormPage() {
   const stopProp = (e) => {
     e.stopPropagation()
   }
+
   
   return (
     <>
@@ -49,11 +53,21 @@ function SignupFormPage() {
         <input type="text" value={email} placeholder="Email" id ="email" onChange={(e) => setEmail(e.target.value)} required/>
         <br/>
         <div id="errors">
-        {backErrors && <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>}
-        <span className="errors"> {backErrors && backErrors.map(error => <span>{error}</span>)} </span>
+          {emailErrors?.length > 0 && <>
+            <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>
+            <span className="errors">{emailErrors}</span>
+          </>}
         </div>
         <br/>
         <input type="password" id="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} required/>
+        <br/>
+        <div id="errors">
+          {passwordErrors?.length > 0 && 
+          <>
+            <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>
+            <span className="errors">{passwordErrors}</span>
+          </>}
+        </div>
         <br/>
         <button type="submit" className="submit">Sign Up</button>
     </form>

@@ -1,7 +1,6 @@
 import React from 'react';
 import ProfileButton from './profileButton';
 import './navigation.css'
-// import "/Users/michelleli/Desktop/LuxeBNB/frontend/src/assets/ABNB.png"
 import { useHistory } from 'react-router-dom';
 import SearchBar from './SearchBar';
 

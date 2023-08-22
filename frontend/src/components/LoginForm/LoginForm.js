@@ -1,15 +1,17 @@
 
 import React, { useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
+import { useEffect } from "react";
 import { clearErrors } from "../../store/errors";
 import { login } from "../../store/session";
 import './LoginForm.css'
 
-function LoginForm() {
+function LoginForm({closeModal}) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector(state => state.errors.login)
+  const currentUser = useSelector(state => state.session.user)
 
   const handleSubmit = (e) => {
     e.stopPropagation()
@@ -28,6 +30,12 @@ function LoginForm() {
     e.stopPropagation()
   }
 
+  useEffect(()=> {
+    if (currentUser) {
+      closeModal()
+    }
+  }, [currentUser])
+
   return (
     <form className="loginForm" onSubmit={handleSubmit} onClick={stopProp}>
       <h4>Log In</h4>
@@ -35,7 +43,7 @@ function LoginForm() {
       <h3>Welcome to Luxebnb</h3>
       <div id="errors">
         {errors && <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>}
-        <span className="errors">      {errors}</span>
+        <span className="errors">{errors}</span>
       </div>
       <div>
         <input

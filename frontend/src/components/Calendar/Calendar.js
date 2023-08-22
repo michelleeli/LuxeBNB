@@ -23,7 +23,7 @@ export default function CalendarModal({listing}) {
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState(false)
 
-  const reservations = useSelector((state) => state.entities.reservations)
+  const reservations = useSelector((state) => Object.values(state.entities.reservations)).filter(reservation => reservation.listingId === listing.id)
 
   useEffect(()=> {
     setLoggedOut(!currentUser)
@@ -153,13 +153,12 @@ export default function CalendarModal({listing}) {
     })
 
     return dates;
-
   }
 
   return (
       <>
       {clickRes && (<Modal onClose={() => setClickRes(false)}>
-          <LoginForm />
+          <LoginForm closeModal={()=> setClickRes(false)}/>
         </Modal>)}
       {error && <div className='errors'>
         <i class="fa-solid fa-circle-exclamation" style={{color: "#b34125",}}></i>

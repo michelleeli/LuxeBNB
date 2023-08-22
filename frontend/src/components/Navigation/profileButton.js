@@ -10,8 +10,10 @@ import { useHistory } from "react-router-dom";
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const currentUser = useSelector(state => state.session.user)
+  const currentUser = useSelector(state => state.session.user);
   const history = useHistory();
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignup, setOpenSignup] = useState(false);
 
   const openMenu = (e) => {
     e.stopPropagation()
@@ -43,6 +45,14 @@ function ProfileButton() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const handleLogin = () => {
+    setOpenLogin(true)
+    console.log(openLogin)
+  }
+
+  const handleSignup = () => {
+    setOpenSignup(true)
+  }
 
   return (
     <>
@@ -50,14 +60,18 @@ function ProfileButton() {
         <i id="burger" className="fa-solid fa-bars" style={{color: "#717171",}}/>
         <i id="pfpIcon" className="fa-regular fa-circle-user fa-2xl" style={{color: "#717171",}}/>
       </button>
-      {showMenu  && !currentUser && (
+      {showMenu && !currentUser && (
         <ul className="profile-dropdown">
            <>
-            <LoginFormModal/>
-            <SignupModal/>
+            <button id="loginButton" onClick={handleLogin}>Log In</button>
+            <button id="signupButton" onClick={handleSignup}>Sign Up</button>
            </>
         </ul>
       )} 
+
+      {openLogin && <LoginFormModal closeModal={()=> setOpenLogin(false)}/>}
+      {openSignup && <SignupModal closeModal={()=> setOpenSignup(false)}/>}
+
       {showMenu && currentUser && (
         <ul className="logged-in-dropdown">
           <button id="logged-in-buttons" onClick={redirectRes}>My Trips</button>
