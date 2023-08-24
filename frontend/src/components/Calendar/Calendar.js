@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createReservation, fetchReservations, updateReservation } from '../../store/reservations';
 import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
-import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
 import { parseISO } from 'date-fns';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 

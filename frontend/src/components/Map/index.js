@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { Wrapper } from '@googlemaps/react-wrapper';
 import './map.css'
 import { useHistory } from 'react-router-dom/';
-import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
 
 function Map({ listings, mapOptions }) {
   const mapRef = useRef(null);

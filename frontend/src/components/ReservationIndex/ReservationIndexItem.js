@@ -1,7 +1,7 @@
 import { fetchListing } from "../../store/listings"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { deleteReservation, updateReservation } from "../../store/reservations"
+import { deleteReservation } from "../../store/reservations"
 import ReviewForm from "../Reviews/ReviewForm"
 import { Modal } from "../../context/Modal"
 import { deleteReview, getReview } from "../../store/reviews"

@@ -1,9 +1,7 @@
 #filter {
-    /* position: fixed; */
     width: 88%;
     height: 7vh;
     margin-left: 5vw;
-    /* padding-top: 2vh; */
     padding-left: 2vh;
     display: flex;
     justify-content: space-around;

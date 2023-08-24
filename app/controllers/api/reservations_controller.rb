@@ -8,12 +8,7 @@ class Api::ReservationsController < ApplicationController
             render json: {errors: @reservation.errors.full_messages }, status: 422
         end 
     end 
-
-    # def index 
-    #     @reservations = Reservation.where(user_id: current_user.id)
-    #     render 'api/reservations/index'
-    # end 
-
+    
     def index 
         @reservations = Reservation.all
         render 'api/reservations/index'

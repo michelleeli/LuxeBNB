@@ -138,9 +138,9 @@ puts "Destroying tables..."
     listing_tag5 = ListingTag.create!(listing_id: listing8.id, tag_id: nature.id)
     listing_tag6 = ListingTag.create!(listing_id: listing8.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing8.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing8#{char}.png"), filename: "listing8#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing8.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing8#{char}.png"), filename: "listing8#{char}")
+    end 
 
     listing2 = Listing.create!(
         title: "The Kellogg Doolittle House",
@@ -170,9 +170,9 @@ puts "Destroying tables..."
     listing_tag5 = ListingTag.create!(listing_id: listing2.id, tag_id: nature.id)
     listing_tag6 = ListingTag.create!(listing_id: listing2.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing2.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing2#{char}.png"), filename: "listing2#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing2.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing2#{char}.png"), filename: "listing2#{char}")
+    end 
 
     listings << listing2
 
@@ -206,9 +206,9 @@ puts "Destroying tables..."
     listing_tag9 = ListingTag.create!(listing_id: listing9.id, tag_id: nature.id)
     listing_tag10 = ListingTag.create!(listing_id: listing9.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing9.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing9#{char}.png"), filename: "listing9#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing9.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing9#{char}.png"), filename: "listing9#{char}")
+    end 
 
     listing10 = Listing.create!(
         title: "Villa El Nido",
@@ -240,9 +240,9 @@ puts "Destroying tables..."
     listing_tag13 = ListingTag.create!(listing_id: listing10.id, tag_id: nature.id)
     listing_tag14 = ListingTag.create!(listing_id: listing10.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing10.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing10#{char}.png"), filename: "listing10#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing10.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing10#{char}.png"), filename: "listing10#{char}")
+    end 
 
     listing7 = Listing.create!(
         title: "Villa Rosana",
@@ -274,9 +274,9 @@ puts "Destroying tables..."
     listing_tag17 = ListingTag.create!(listing_id: listing7.id, tag_id: nature.id)
     listing_tag18 = ListingTag.create!(listing_id: listing7.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing7.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing7#{char}.png"), filename: "listing7#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing7.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing7#{char}.png"), filename: "listing7#{char}")
+    end 
 
     listing11 = Listing.create!(
         title: "Villa Korcula Diamond",
@@ -307,9 +307,9 @@ puts "Destroying tables..."
     listing_tag21 = ListingTag.create!(listing_id: listing11.id, tag_id: nature.id)
     listing_tag20 = ListingTag.create!(listing_id: listing11.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing11.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing11#{char}.png"), filename: "listing11#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing11.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing11#{char}.png"), filename: "listing11#{char}")
+    end 
 
     listing12 = Listing.create!(
         title: "Villa Santa Esmeralda",
@@ -341,9 +341,9 @@ puts "Destroying tables..."
     listing_tag24 = ListingTag.create!(listing_id: listing12.id, tag_id: nature.id)
     listing_tag25 = ListingTag.create!(listing_id: listing12.id, tag_id: mansion.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing12.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing12#{char}.png"), filename: "listing12#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing12.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing12#{char}.png"), filename: "listing12#{char}")
+    end 
 
     listing1 = Listing.create!(
         title: "Beverly Hills Maison",
@@ -374,9 +374,9 @@ puts "Destroying tables..."
     listing_tag27 = ListingTag.create!(listing_id: listing1.id, tag_id: mansion.id)
     listing_tag28 = ListingTag.create!(listing_id: listing1.id, tag_id: nature.id)
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing1.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing1#{char}.png"), filename: "listing1#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing1.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing1#{char}.png"), filename: "listing1#{char}")
+    end 
 
     listings << listing1
 
@@ -404,9 +404,9 @@ puts "Destroying tables..."
         washer: true, 
         kitchen: true)
 
-        # ["a", "b", "c", "d", "e"].each do |char|
-        #     listing3.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing3#{char}.png"), filename: "listing3#{char}")
-        # end 
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing3.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing3#{char}.png"), filename: "listing3#{char}")
+        end 
 
         listing_tag29 = ListingTag.create!(listing_id: listing3.id, tag_id: pool.id)
         listing_tag30 = ListingTag.create!(listing_id: listing3.id, tag_id: mansion.id)
@@ -444,9 +444,9 @@ puts "Destroying tables..."
         listing_tag38 = ListingTag.create!(listing_id: listing5.id, tag_id: pool.id)
 
         
-        # ["a", "b", "c", "d", "e"].each do |char|
-        #     listing5.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing5#{char}.png"), filename: "listing5#{char}")
-        # end 
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing5.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing5#{char}.png"), filename: "listing5#{char}")
+        end 
 
         listings << listing5
 
@@ -474,9 +474,9 @@ puts "Destroying tables..."
         washer: true, 
         kitchen: true)
 
-        # ["a", "b", "c", "d", "e"].each do |char|
-        #     listing13.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing13#{char}.png"), filename: "listing13#{char}")
-        # end 
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing13.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing13#{char}.png"), filename: "listing13#{char}")
+        end 
 
         listing_tag39 = ListingTag.create!(listing_id: listing13.id, tag_id: island.id)
         listing_tag40 = ListingTag.create!(listing_id: listing13.id, tag_id: pool.id)
@@ -508,9 +508,9 @@ listing14 = Listing.create!(
     kitchen: true)
 
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing14.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing14#{char}.png"), filename: "listing14#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing14.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing14#{char}.png"), filename: "listing14#{char}")
+    end 
 
     listing_tag43 = ListingTag.create!(listing_id: listing14.id, tag_id: city.id)
     listing_tag44 = ListingTag.create!(listing_id: listing14.id, tag_id: apartment.id)
@@ -540,9 +540,9 @@ listing14 = Listing.create!(
         kitchen: true)
 
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing15.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing15#{char}.png"), filename: "listing15#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing15.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing15#{char}.png"), filename: "listing15#{char}")
+    end 
 
     listing_tag45 = ListingTag.create!(listing_id: listing15.id, tag_id: city.id)
     listing_tag46 = ListingTag.create!(listing_id: listing15.id, tag_id: apartment.id)
@@ -572,9 +572,9 @@ listing14 = Listing.create!(
         kitchen: true)
 
 
-    # ["a", "b", "c", "d", "e"].each do |char|
-    #     listing16.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing16#{char}.png"), filename: "listing16#{char}")
-    # end 
+    ["a", "b", "c", "d", "e"].each do |char|
+        listing16.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing16#{char}.png"), filename: "listing16#{char}")
+    end 
 
     listing_45 = ListingTag.create!(listing_id: listing16.id, tag_id: nature.id)
     listing_46 = ListingTag.create!(listing_id: listing16.id, tag_id: mansion.id)
@@ -605,9 +605,9 @@ listing14 = Listing.create!(
         washer: true, 
         kitchen: true)
 
-        # ["a", "b", "c", "d", "e"].each do |char|
-        #     listing6.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing6#{char}.png"), filename: "listing6#{char}")
-        # end 
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing6.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing6#{char}.png"), filename: "listing6#{char}")
+        end 
 
         listing_tag1 = ListingTag.create!(listing_id: listing6.id, tag_id: apartment.id)
         listing_tag2 = ListingTag.create!(listing_id: listing6.id, tag_id: pool.id)

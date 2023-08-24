@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreItem from "./ExploreItem";
-import { fetchListing, fetchListings } from "../../store/listings";
+import { fetchListings } from "../../store/listings";
 
 export default function Explore () {
     const dispatch = useDispatch()

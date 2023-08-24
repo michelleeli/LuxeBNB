@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux"
 import { csrfFetch } from "./csrf"
 
 export const ADD_LISTING = 'listings/ADD_LISTING'

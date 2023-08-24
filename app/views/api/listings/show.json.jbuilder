@@ -20,7 +20,6 @@ json.listing do
         json.photo4Url @listing.images.attached? ? @listing.images[3].url : nil
         json.photo5Url @listing.images.attached? ? @listing.images[4].url : nil
         json.tags @listing.tags.pluck(:name)
-        # json.liked Like.where(user_id: current_user.id, listing_id: @listing.id)[0]
     end 
 end 
 

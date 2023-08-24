@@ -1,7 +1,6 @@
 
-import { useSelector } from "react-redux";
 import { csrfFetch } from "./csrf";
-import { clearErrors, setLoginErrors } from "./errors";
+import { setLoginErrors } from "./errors";
 import { setSignupErrors } from "./errors";
 
 const SET_CURRENT_USER = 'session/setCurrentUser';
