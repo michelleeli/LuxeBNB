@@ -30,11 +30,13 @@ function ProfileButton() {
   const redirectRes = (e) => {
     e.stopPropagation()
     history.push(`/reservations`)
+    setShowMenu(false)
   }
 
   const redirectWish = (e) => {
     e.stopPropagation()
     history.push(`/wishlist`)
+    setShowMenu(false)
   }
 
   useEffect(() => {

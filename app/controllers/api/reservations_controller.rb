@@ -19,7 +19,16 @@ class Api::ReservationsController < ApplicationController
         if @reservation 
             render 'api/reservations/show'
         else 
-            render json: {errors: @listing.errors.full_messages}, status: 422;
+            render json: {errors: @reservation.errors.full_messages}, status: 422;
+        end 
+    end 
+
+    def update 
+        @reservation = Reservation.find(params[:id])
+        if @reservation.update(reservation_params)
+            render 'api/reservations/show'
+        else 
+            render json: {errors: @reservation.errors.full_messages}, status: 422;
         end 
     end 
 

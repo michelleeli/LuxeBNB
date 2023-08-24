@@ -192,7 +192,9 @@ export default function ReviewForm({reservation}) {
                 listing_id:reservation.listingId}))
             }
         else {
-            dispatch(updateReview({body: body, 
+            dispatch(updateReview({
+                id: reservation.id,
+                body: body, 
                 cleanliness: cleanliness, 
                 communication:communication, 
                 check_in: checkin, 
