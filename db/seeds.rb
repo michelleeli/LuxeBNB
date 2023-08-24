@@ -97,9 +97,9 @@ puts "Destroying tables..."
         washer: false, 
         kitchen: true)
 
-        # ["a", "b", "c", "d", "e"].each do |char|
-        #     listing4.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing4#{char}.png"), filename: "listing4#{char}")
-        # end 
+        ["a", "b", "c", "d", "e"].each do |char|
+            listing4.images.attach(io: URI.open("https://luxebnb-seeds.s3.amazonaws.com/listing4#{char}.png"), filename: "listing4#{char}")
+        end 
 
         listing_tag33 = ListingTag.create!(listing_id: listing4.id, tag_id: city.id)
         listing_tag34 = ListingTag.create!(listing_id: listing4.id, tag_id: apartment.id)

@@ -72,7 +72,7 @@ function Map({ listings, mapOptions }) {
     return () => {
       markersRef.current = {};
     };
-  }, [listings, mapOptions]);
+  }, [JSON.stringify(listings), mapOptions]);
 
   return (
     <>

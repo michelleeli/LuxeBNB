@@ -10,10 +10,12 @@ footer {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid lightgrey;
+    left:0px;
+    right:0px;
     padding: 1vh;   
     position: fixed;
     bottom: 0;
-    width: 98%;
+    width: 99%;
     background-color: white;
 }
 

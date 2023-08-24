@@ -30,7 +30,7 @@ export default function CalendarModal({listing, reservation, closeModal}) {
       key: 'selection'
     }
   ]);
-  const reservations = useSelector((state) => Object.values(state.entities.reservations)).filter(reservation => reservation.listingId === listing.id)
+  const reservations = useSelector((state) => Object.values(state.entities.reservations)).filter(reservation => reservation.listingId === listing?.id)
 
   useEffect(()=> {
     dispatch(fetchReservations())
