@@ -164,7 +164,7 @@ button:hover {
     top:45px;
     width: 98%;
     background-color: white;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
     box-shadow: 1px 1px 5px rgba(138, 138, 138, 0.3);
     border-radius: 15px;
     padding-left: 0px;
