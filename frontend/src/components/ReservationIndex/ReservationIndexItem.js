@@ -67,12 +67,13 @@ export const ReservationIndexItem = ({reservation}) => {
         {showEditModal && 
             <Modal onClose={()=>setShowEditModal(false)}>
                 <h2>Edit Reservation</h2>
+                <button id="close" onClick={()=> setShowEditModal(false)}>Close</button>
                 <div id="editModal">
                     <div id ="editModalImage">
                         <img src="https://hips.hearstapps.com/hmg-prod/images/1-jpg-64cc081f7476b.jpg?resize=400:*"/>
                         <h3>Reservation Details</h3>
                             <p><b>{listing.title}</b></p>
-                            <p>{listing.address} {listing.city}, {listing.country}</p> 
+                            <p>{listing.address} {listing.city}</p> 
                             <hr/>
                             <p><b>Check In:</b> {(new Date(reservation.startDate.replace(/-/g, '\/'))).toDateString().slice(4)}</p>
                             <p><b>Check Out:</b> {(new Date(reservation.endDate.replace(/-/g, '\/'))).toDateString().slice(4)}</p>

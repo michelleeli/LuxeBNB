@@ -84,6 +84,10 @@
     padding-top: 21px;
 }
 
+#avatarIcon {
+    margin-top: 0.35vh;
+}
+
 #burger {
     padding-top: 15px;
     padding-left: 7px;

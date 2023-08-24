@@ -157,3 +157,16 @@
     scale: 0.9;
     transform: translate(-28vw, -15vh);
 }
+
+#close {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    font-size: 15px;
+    right: 1vw;
+    top: 1vh;
+}
+
+#close:hover {
+    background-color: white;
+}

@@ -6,6 +6,7 @@ import './navigation.css'
 import SignupModal from "../SignupModal";
 import { clearErrors, setLoginErrors } from "../../store/errors";
 import { useHistory } from "react-router-dom";
+import Avatar, { genConfig } from 'react-nice-avatar'
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -14,6 +15,26 @@ function ProfileButton() {
   const history = useHistory();
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
+  const config = {
+    "sex": "man",
+    "faceColor": "#F9C9B6",
+    "earSize": "small",
+    "eyeStyle": "oval",
+    "noseStyle": "long",
+    "mouthStyle": "laugh",
+    "shirtStyle": "hoody",
+    "glassesStyle": "none",
+    "hairColor": "#000",
+    "hairStyle": "womanShort",
+    "hatStyle": "none",
+    "hatColor": "#fff",
+    "eyeBrowStyle": "up",
+    "shirtColor": "#9287FF",
+    "bgColor": "#FC909F"
+  }
+  const myConfig = genConfig(config);
+
+  const [userAvatar, setUserAvatar] = useState()
 
   const openMenu = (e) => {
     e.stopPropagation()
@@ -38,6 +59,13 @@ function ProfileButton() {
     history.push(`/wishlist`)
     setShowMenu(false)
   }
+
+  useEffect(()=> {
+    if (currentUser) {
+      setUserAvatar(<Avatar id="avatarIcon" style={{ width: '2.2rem', height: '2.2rem' }} {...myConfig} />
+      )
+    }
+  }, [currentUser])
 
   useEffect(() => {
     if (!showMenu) return;
@@ -65,7 +93,8 @@ function ProfileButton() {
         </div>
         <button id="pfp" onClick={openMenu}>
           <i id="burger" className="fa-solid fa-bars" style={{color: "#717171",}}/>
-          <i id="pfpIcon" className="fa-regular fa-circle-user fa-2xl" style={{color: "#717171",}}/>
+          {currentUser && userAvatar}
+          {!currentUser && <i id="pfpIcon" className="fa-regular fa-circle-user fa-2xl" style={{color: "#717171",}}/>}
         </button>
       </div>
       {showMenu && !currentUser && (
