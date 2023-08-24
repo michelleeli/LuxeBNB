@@ -7,10 +7,9 @@ import { useEffect } from "react"
 import { fetchReservations } from "../../store/reservations"
 
 export default function ReservationIndex({reservations}) {
-  
     const dispatch = useDispatch()
 
-    const upcomings = reservations.filter(reservation => (new Date(reservation.startDate) >= new Date()))
+    const upcomings = reservations.filter(reservation => (new Date(reservation.startDate) >= new Date())).sort(function(a,b){return new Date(a.startDate) - new Date(b.startDate)})
     const pasts = reservations.filter((reservation) => ( new Date(reservation.startDate) < new Date()))
     const currentUser = useSelector(state => state.session.user)
 

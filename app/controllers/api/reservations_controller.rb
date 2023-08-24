@@ -9,8 +9,13 @@ class Api::ReservationsController < ApplicationController
         end 
     end 
 
+    # def index 
+    #     @reservations = Reservation.where(user_id: current_user.id)
+    #     render 'api/reservations/index'
+    # end 
+
     def index 
-        @reservations = Reservation.where(user_id: current_user.id)
+        @reservations = Reservation.all
         render 'api/reservations/index'
     end 
 

@@ -11,9 +11,8 @@ export default function ReservationIndexPage() {
         history.push('/')
     }
 
-    const reservations = useSelector((state) => Object.values(state.entities.reservations))
+    const reservations = useSelector((state) => Object.values(state.entities.reservations)).filter(reservation => reservation.userId === currentUser?.id)
     const dispatch = useDispatch();
-    // const help = useSelector(state => Object.values(state.entities.reservations))
     useEffect(() => {
         dispatch(fetchReservations())
     }, [])

@@ -4,13 +4,15 @@ import './calendar.css'
 import { DateRange } from 'react-date-range';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createReservation, updateReservation } from '../../store/reservations';
+import { createReservation, fetchReservations, updateReservation } from '../../store/reservations';
 import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
 import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
 import { parseISO } from 'date-fns';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function CalendarModal({listing, reservation, closeModal}) {
+  const history = useHistory();
   const [openCal, setOpenCal] = useState(false)
   const [openGuests, setOpenGuests] = useState(false)
   const [adult, setAdult] = useState(1)
@@ -30,6 +32,10 @@ export default function CalendarModal({listing, reservation, closeModal}) {
     }
   ]);
   const reservations = useSelector((state) => Object.values(state.entities.reservations)).filter(reservation => reservation.listingId === listing.id)
+
+  useEffect(()=> {
+    dispatch(fetchReservations())
+  }, [reservations.length])
 
   useEffect(()=> {
     setLoggedOut(!currentUser)
@@ -151,9 +157,9 @@ export default function CalendarModal({listing, reservation, closeModal}) {
         start_date: dates[0].startDate, 
         end_date: dates[0].endDate, 
         guests, 
-        total: (listing?.price * numDays())}))) 
-        {setSaved(true)
-      }
+        total: (listing?.price * numDays())})
+        )) 
+        history.push('/reservations')
     }
   }
 
@@ -276,16 +282,6 @@ export default function CalendarModal({listing, reservation, closeModal}) {
             )}
 
           </form>
-        )}
-        {saved && (
-          <Modal onClose={() => setSaved(false)}>
-            <div id="saved">
-              <button id="confirmClose" onClick={()=>setSaved(false)}>Close</button>
-              <h2>Booking Confirmed</h2>
-              <h3>Enjoy your trip!</h3>
-              <ListingIndexItem listing={listing}/> 
-            </div>
-          </Modal>
         )}
         </>
     )
