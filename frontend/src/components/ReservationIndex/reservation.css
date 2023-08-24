@@ -136,3 +136,24 @@
     margin-top: 4vh;
 }
 
+#editModal {
+    display: flex;
+}
+
+#editModal .Calendar {
+    margin-left: 2vw;
+}
+
+#editModal img {
+    margin-top: 4vh;
+    border-radius: 10px;
+}
+
+#editModalImage {
+    text-align: left;
+}
+
+#editModal #calendar {
+    scale: 0.9;
+    transform: translate(-28vw, -15vh);
+}

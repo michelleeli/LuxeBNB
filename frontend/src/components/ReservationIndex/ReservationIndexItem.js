@@ -1,11 +1,12 @@
 import { fetchListing } from "../../store/listings"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { deleteReservation } from "../../store/reservations"
+import { deleteReservation, updateReservation } from "../../store/reservations"
 import ReviewForm from "../Reviews/ReviewForm"
 import { Modal } from "../../context/Modal"
 import { deleteReview, getReview } from "../../store/reviews"
 import { useHistory } from "react-router-dom";
+import Calendar from "../Calendar"
 
 export const ReservationIndexItem = ({reservation}) => {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ export const ReservationIndexItem = ({reservation}) => {
     const [openReview, setOpenReview] = useState(false)
     const currentUserId = useSelector(state => state.session.user)?.id
     const [reviewType, setReviewType] = useState("Create")
+    const [showEditModal, setShowEditModal] = useState(false)
     const review = useSelector(getReview(reservation.listingId, currentUserId))
     const history = useHistory()
 
@@ -48,10 +50,38 @@ export const ReservationIndexItem = ({reservation}) => {
     const showListing = () => {
         history.push(`/listings/${listing.id}`)
     }
+
+    const convertDate = (date) => {
+        const newDate = new Date(date.replace(/-/g, '\/'))
+        return newDate.toDateString().slice(4);
+    }
     
     return(
         <>
-        {future && (<button id="cancel" onClick={deleteRes}>Cancel reservation</button>)}
+        {future && 
+            <>
+                <button id="cancel" onClick={deleteRes}>Cancel reservation</button>
+                <button id="cancel" onClick={()=> setShowEditModal(true)}>Update reservation</button>
+            </>
+        }
+        {showEditModal && 
+            <Modal onClose={()=>setShowEditModal(false)}>
+                <h2>Edit Reservation</h2>
+                <div id="editModal">
+                    <div id ="editModalImage">
+                        <img src="https://hips.hearstapps.com/hmg-prod/images/1-jpg-64cc081f7476b.jpg?resize=400:*"/>
+                        <h3>Reservation Details</h3>
+                            <p><b>{listing.title}</b></p>
+                            <p>{listing.address} {listing.city}, {listing.country}</p> 
+                            <hr/>
+                            <p><b>Check In:</b> {(new Date(reservation.startDate.replace(/-/g, '\/'))).toDateString().slice(4)}</p>
+                            <p><b>Check Out:</b> {(new Date(reservation.endDate.replace(/-/g, '\/'))).toDateString().slice(4)}</p>
+                            <p><b>Number of Guests:</b> {reservation.guests}</p>
+                    </div>
+                    <Calendar listing={listing} reservation={reservation} closeModal={()=> setShowEditModal(false)}/>
+                </div>
+            </Modal>
+        }
         {!future && (<button id="cancel" onClick={openReviewForm}>{reviewType === "Create" ? "Write a review" : "Update review" }</button>)}
         {!future && reviewType === "Update" && <button id="cancel" onClick={deleteRev}>Delete Review</button>}
         {openReview && (
@@ -68,7 +98,7 @@ export const ReservationIndexItem = ({reservation}) => {
                 <span id="hostedBy">Hosted by {listing.host}</span>
                 <hr id="upcomingHr"/>
                 <div className="dateAddress">
-                    <p id="startDate">{reservation.startDate}</p>
+                    <p id="startDate">{convertDate(reservation.startDate)}</p>
                     <p id="address">{listing.address} {listing.city}, {listing.state}</p>
                 </div>
             </div>

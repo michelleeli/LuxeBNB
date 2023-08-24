@@ -8,7 +8,7 @@ export const ReviewIndexItem = ({review}) => {
                 <Avatar style={{ width: '3rem', height: '3rem' }} {...config} />
                 <div>
                     <span id="name">{review.user}</span>
-                    <div id="caption">{new Date(review.createdAt).toUTCString().slice(5,16)}</div>
+                    <div id="caption">{new Date(review.createdAt).toUTCString().slice(7,16)}</div>
                 </div>
             </div>
             <div id="bodyReview">{review.body}</div>

@@ -4,25 +4,31 @@ import './calendar.css'
 import { DateRange } from 'react-date-range';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createReservation } from '../../store/reservations';
+import { createReservation, updateReservation } from '../../store/reservations';
 import LoginForm from '../LoginForm/LoginForm';
 import { Modal } from '../../context/Modal';
 import { ListingIndexItem } from '../ListingIndex/ListingIndexItem';
 import { parseISO } from 'date-fns';
 
-export default function CalendarModal({listing}) {
+export default function CalendarModal({listing, reservation, closeModal}) {
   const [openCal, setOpenCal] = useState(false)
   const [openGuests, setOpenGuests] = useState(false)
   const [adult, setAdult] = useState(1)
   const [child, setChild] = useState(0)
-  const guests = child + adult 
+  const guests = adult + child;
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.session.user)
   const [loggedOut, setLoggedOut] = useState(!currentUser)
   const [clickRes, setClickRes] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState(false)
-
+  const [dates, setDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection'
+    }
+  ]);
   const reservations = useSelector((state) => Object.values(state.entities.reservations)).filter(reservation => reservation.listingId === listing.id)
 
   useEffect(()=> {
@@ -51,13 +57,13 @@ export default function CalendarModal({listing}) {
     }
   }, [currentUser])
 
-  const [dates, setDates] = useState([
-      {
-        startDate: new Date(),
-        endDate: new Date(),
-        key: 'selection'
-      }
-    ]);
+  useEffect(()=> {
+    if (reservation) {
+      setAdult(reservation.guests)
+      setDates([{startDate: new Date(reservation.startDate.replace(/-/g, '\/')), endDate: new Date(reservation.endDate.replace(/-/g, '\/')), key: 'selection'}])
+    }
+  }, [reservation])
+  
   
   const closeModals = () => {
     setOpenCal(false)
@@ -126,9 +132,27 @@ export default function CalendarModal({listing}) {
       setError(true) 
       return;
     } 
+    else if (reservation) {
+      dispatch(updateReservation({
+        id: reservation.id,
+        listing_id: listing.id, 
+        user_id: currentUser?.id, 
+        start_date: dates[0].startDate, 
+        end_date: dates[0].endDate, 
+        guests, 
+        total: (listing?.price * numDays())
+      }))
+      closeModal();
+    }
     else {
-      if (dispatch(createReservation({listing_id: listing.id, user_id: currentUser?.id, start_date: dates[0].startDate, end_date: dates[0].endDate, guests, total: (listing?.price * numDays())}))) {
-        setSaved(true)
+      (dispatch(createReservation({
+        listing_id: listing.id, 
+        user_id: currentUser?.id, 
+        start_date: dates[0].startDate, 
+        end_date: dates[0].endDate, 
+        guests, 
+        total: (listing?.price * numDays())}))) 
+        {setSaved(true)
       }
     }
   }
@@ -215,8 +239,18 @@ export default function CalendarModal({listing}) {
               </div>
             )}
 
-            <button id="reserve">Reserve</button>
-            <p id="reserveCaption">You wont be charged yet</p>
+            {reservation && 
+              <>
+                <button id="reserve">Update reservation</button>
+                <p></p>
+              </>
+            }
+            {!reservation && 
+              <>
+                <button id="reserve">Reserve</button>
+                <p id="reserveCaption">You wont be charged yet</p>
+              </>
+            }
             
             {numDays() > 0 && (
               <>
