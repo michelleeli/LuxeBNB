@@ -5,8 +5,7 @@ hr {
 }
 
 .loginForm input {
-    width: 480px;
-    height: 50px;
+    width: 33vw;
     border: 1px solid grey;
     font-size: 15px;
 }
@@ -29,11 +28,8 @@ h3 {
 
 .submit {
     color: white;
-    width: 500px;
-    height: 50px;
     border-radius: 10px;
     background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
-    margin-top: 20px;
 }
 
 .errors {
@@ -41,13 +37,13 @@ h3 {
 }
 
 #errors {
-    padding: 5px;
+    padding: 1vh;
     font-size: 13px;
     text-align: left;
 }
 
 #loginButton {
     text-align: left;
-    padding-left: 20px;
-    margin-top: 15px;
+    padding-left: 1.5vw;
+    margin-top: 2vh;
 }

@@ -1,11 +1,11 @@
 .ListingShow {
-    margin-left: 150px;
-    width: 655px;
+    margin-left: 11vw;
+    width: 45.5vw;
 }
 
 hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 h2 {
@@ -121,6 +121,6 @@ img#four {
 #showPageMap {
     width: 80%;
     margin: auto;
-    height: 550px;
+    height: 80vh;
     overflow: hidden;
 }

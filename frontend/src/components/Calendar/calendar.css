@@ -1,9 +1,9 @@
 .Calendar {
-    width: 300px;
-    height: 460px;
+    width: 20vw;
+    height: 60vh;
     border: 1px solid rgb(234, 233, 233);
-    margin-left: 90px;
-    padding: 30px;
+    margin-left: 6vw;
+    padding: 2.2vw;
     margin-top: 30px;
     border-radius: 15px;
     box-shadow: 0px 0px 15px rgba(160, 159, 159, 0.3);
@@ -16,10 +16,10 @@
 #reserve {
     color: white;
     width: 100%;
-    height: 50px;
+    height: 6vh;
     border-radius: 10px;
     background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
-    margin-top: 20px;
+    margin-top: 3vh;
     font-size: 15px;
 }
 
@@ -31,7 +31,7 @@
 
 #dates {
     display: flex;
-    height: 50px;
+    height: 7.5vh;
 }
 
 #checkin {
@@ -45,7 +45,6 @@
 }
 
 #guestSelect {
-    height: 50px;
     width: 92%;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
@@ -55,9 +54,9 @@
     position: absolute;
     margin-top: 0px;
     transform: translateX(-25vw);
-    padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 2vh;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
     background-color: white;;
     border: 1px solid rgb(234, 232, 232);
     box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
@@ -96,7 +95,7 @@
     border: 1px solid rgb(234, 232, 232);
     box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
     padding-bottom: 1.5vw;
-    width: 300px;
+    width: 20vw;
     background-color: white;
     padding-top: 1.5vw;
     border-bottom-left-radius: 15px;
@@ -141,7 +140,7 @@
 
 #ageCaption {
     font-size: 13px;
-    transform: translateY(-12px);
+    transform: translateY(-2vh);
 }
 
 .done {
@@ -157,7 +156,7 @@
 }
 
 #dateCaption > div {
-    width: 130px;
+    width: 9vw;
     padding-left: 1vw;
 }
 

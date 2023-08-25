@@ -3,7 +3,7 @@
 }
 
 #Trip {
-    margin-top: 30px;
+    margin-top: 2vh;
     margin-bottom: 5vh;
 }
 
@@ -13,21 +13,16 @@
     width: 45%
 }
 
-
 .upcomingDiv {
     display: flex;
     justify-content: space-between;
     box-sizing: content-box;
     border: 1px solid rgb(234, 233, 233);
     border-radius: 15px;
-    padding-left: 25px;
+    padding-left: 1.5vw;
     width: 56vw;
-    height: 190px;
+    height: 24vh;
     box-shadow: 0px 0px 15px rgba(160, 159, 159, 0.3);
-}
-
-.upcomingDescription {
-    width: 400px;
 }
 
 #hostedBy {
@@ -36,7 +31,7 @@
 }
 
 #city {
-    margin-bottom: 5px;
+    margin-bottom: 0.5vh;
 }
 
 .dateAddress {
@@ -46,7 +41,7 @@
 }
 
 #startDate {
-    padding-right: 10px;
+    padding-right: 1vw;
     border-right: 2px solid lightgrey;
 }
 

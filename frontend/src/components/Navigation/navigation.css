@@ -1,10 +1,10 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-top: 10px;
-    height: 33px;
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-top: 2vh;
+    height: 7vh;
 }
 
 #logo{
@@ -16,14 +16,14 @@
 }
 
 #logoimage {
-    padding-top: 5px;
-    width: 31px;
-    height: 31px;
+    padding-top: 0.7vh;
+    width: 2vw;
+    height: 2vw;
 }
 
 #pfp {
-    width: 80px;
-    height: 45px;
+    width: 6vw;
+    height: 5.5vh;
     border-radius: 50px;
     border: 1px solid lightgray;
     background-color: white;
@@ -41,8 +41,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 130px;
-    width: 201px;
+    height: 17vh;
+    width: 15vw;
     box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
     border-radius: 10px;
     transform: translateX(-35px);
@@ -56,9 +56,10 @@
     position: absolute;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     height: 25vh;
-    width: 201px;
+    width: 15vw;
     box-shadow: 0px 0px 10px rgba(160, 159, 159, 0.3);
     border-radius: 10px;
     transform: translateX(-35px);
@@ -68,20 +69,18 @@
 }
 
 .logged-in-dropdown > * {
-    padding-right: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 1.7vh;
+    padding-bottom: 1.6vh;
 }
 
 .profile-dropdown > * {
-    padding-right: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 1.8vh;
+    padding-bottom: 1.7vh;
     font-weight: 500;
 }
 
 #pfpIcon {
-    padding-top: 21px;
+    padding-top: 2.6vh;
 }
 
 #avatarIcon {
@@ -89,8 +88,7 @@
 }
 
 #burger {
-    padding-top: 15px;
-    padding-left: 7px;
+    padding-top: 1.8vh;
 }
 
 button {
@@ -98,7 +96,7 @@ button {
     border: none;
     color: rgb(43, 43, 43);
     cursor: pointer;
-    margin-top: 7px;
+    margin-top: 1vh;
     width: 100%;
 }
 
@@ -107,8 +105,8 @@ button:hover {
 }
 
 #logoname{
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 1vh;
+    margin-left: 1vw;
 }
 
 #search:hover {
@@ -121,8 +119,7 @@ button:hover {
     display:block;
     width: 100%;               
     background-color:#e7e6e6;
-    height: 1px;
-    margin-top: 30px;
+    margin-top: 2vh;
 }
 
 #logged-in-buttons {
@@ -145,7 +142,7 @@ button:hover {
 
 .searchbar-container {
     display: flex;
-    padding: 5px;
+    padding: 0.8vh;
     border: 1px solid lightgrey;
     width: 25vw;
     height: 4vh;
@@ -159,16 +156,15 @@ button:hover {
 #search-input, #search-input:focus {
     border: 0;
     outline: none;
-    height: 30px;
-    margin-left: 2px;
+    height: 4vh;
+    margin-left: 0.5vw;
 }
 
 #search-dropdown {
     position: absolute;
-    top:45px;
+    top: 4vh;
     width: 98%;
     background-color: white;
-    /* border: 1px solid lightgrey; */
     box-shadow: 1px 1px 5px rgba(138, 138, 138, 0.3);
     border-radius: 15px;
     padding-left: 0px;

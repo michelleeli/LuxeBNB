@@ -50,8 +50,8 @@
 
 progress {
     accent-color: rgb(20, 20, 20);
-    width: 120px;
-    height: 9px;
+    width: 11vw;
+    height: 0.8vh;
 }
 
 #reviewer {

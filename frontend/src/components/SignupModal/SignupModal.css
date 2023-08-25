@@ -8,11 +8,11 @@ hr {
 }
 
 input {
-    width: 480px;
-    height: 50px;
+    width: 33vw;
+    height: 7vh;
     border: 1px solid  rgb(183, 182, 182);
     font-size: 15px;
-    padding-left: 20px;
+    padding-left: 1vw;
 }
 
 #firstName {
@@ -42,14 +42,14 @@ h3 {
 
 .submit {
     color: white;
-    width: 500px;
-    height: 50px;
+    height: 6vh;
     border-radius: 10px;
     background-image: linear-gradient(to left, rgb(199,45,101) , rgb(212, 56, 81));
-    margin-top: 20px;
+    font-size: 15px;
+    margin-top: 2vh;
 }
 
 #signupButton {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 1.5vw;
 }
