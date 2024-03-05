@@ -1,5 +1,5 @@
 # LuxeBNB
-
+<a href="https://luxebnb.onrender.com/">Live Link! </a>
 <img width="1440" alt="Screen Shot 2023-08-04 at 4 11 42 PM" src="https://github.com/michelleeli/LuxeBNB/assets/130802181/3dd81479-d1ff-4562-82de-cff52601d9a7">
 
 ## Introduction
