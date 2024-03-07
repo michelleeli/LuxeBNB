@@ -11,11 +11,6 @@ export default function ListingIndexPage() {
     const listings = useSelector((state) => Object.values(state.entities.listings))
     const dispatch = useDispatch();
     const[openMap, setOpenMap] = useState(false)
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setTimeout(() => setLoading(false), 550)
-    }, [])
 
     useEffect(() => {
         dispatch(fetchListings())
@@ -35,7 +30,7 @@ export default function ListingIndexPage() {
             <>
             <FilterMenu/>
             <div className="listingIndex">
-                {loading ? <LoadingPage/> : <ListingIndex listings={listings}/>}
+                <ListingIndex listings={listings}/>
                 <button id="show" onClick={showMap}>Show Map  <i className="fa-solid fa-map" style={{color: "#ffffff",}}/></button>
             </div>
         </>)}

@@ -16,7 +16,7 @@ export const ListingIndexItem = ({listing}) => {
         <div>
             {currentUser && <Like listing={listing}/>}
             <div className="ListingItem" onClick={handleClick}>
-                <img class="indexImg" src={listing?.photoUrl}></img>
+                <img class="indexImg" src={listing.photoUrl}></img>
                 <h3 id="listingCaption">{listing?.city}, {listing?.state} 
                     <span >
                         {listing?.avgRating? `★ ${listing.avgRating.toFixed(1)}`: ""}
