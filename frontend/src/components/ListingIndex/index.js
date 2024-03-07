@@ -14,7 +14,7 @@ export default function ListingIndexPage() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        setTimeout(() => setLoading(false), 2000)
+        setTimeout(() => setLoading(false), 550)
     }, [])
 
     useEffect(() => {

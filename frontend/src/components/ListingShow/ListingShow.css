@@ -88,6 +88,12 @@ img#four {
     border-top-right-radius: 15px;
 }
 
+#miniPics > img {
+    height: 25vh;
+    width: 100%;
+    object-fit: cover;
+}
+
 #showCarousel {
     position: absolute;
     width: 11vw;
@@ -101,12 +107,6 @@ img#four {
 
 #showCarousel i {
     margin-right: 1.5px;
-}
-
-#miniPics img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
 }
 
 #host {
