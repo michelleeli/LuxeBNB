@@ -70,7 +70,7 @@ export const ReservationIndexItem = ({reservation}) => {
                 <button id="close" onClick={()=> setShowEditModal(false)}>Close</button>
                 <div id="editModal">
                     <div id ="editModalImage">
-                        <img src="https://hips.hearstapps.com/hmg-prod/images/1-jpg-64cc081f7476b.jpg?resize=400:*"/>
+                        <img class= "reservation-photo" src={listing.photoUrl}/>
                         <h3>Reservation Details</h3>
                             <p><b>{listing.title}</b></p>
                             <p>{listing.address} {listing.city}</p> 

@@ -165,3 +165,7 @@
 #close:hover {
     background-color: white;
 }
+
+.reservation-photo {
+    width: 30vw;
+}
