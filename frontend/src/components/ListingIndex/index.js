@@ -5,7 +5,6 @@ import ListingIndex from './ListingIndex'
 import { useState } from "react";
 import MapWrapper from "../Map";
 import FilterMenu from "../FilterMenu";
-import LoadingPage from "./LoadingPage";
 
 export default function ListingIndexPage() {
     const listings = useSelector((state) => Object.values(state.entities.listings))
